@@ -3,6 +3,10 @@ import requests, Levenshtein
 from Constants import *
 from auxfunc import *
 
+# # Abre sessão do API.AI
+ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
+session_id = ai.session_id
+
 def processStartup(msg, data):
     
     # Processa uma mensagem do usuário quando estamos no primeiro estado do sistema.
@@ -19,9 +23,9 @@ def processStartup(msg, data):
 
     nextState = STARTUP
 
-    # Abre sessão do API.AI
-    ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
-    session_id = ai.session_id
+    # # Abre sessão do API.AI
+    # ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
+    # session_id = ai.session_id
 
     # Manda /query com o input do usuário para o API.AI
     request = ai.text_request()
@@ -30,6 +34,7 @@ def processStartup(msg, data):
 
     # Pega as entities reconhecidas
     response = json.loads(request.getresponse().read())
+    print(response)
     slots = response['result']['parameters']
 
     # Checa quais entidades foram reconhecidas, e atualiza o estado do sistema
@@ -124,4 +129,35 @@ def processLocal(msg, data):
 def processData(msg, data):
     # TODO
     # Mandar fala pro API.AI, ver se ele reconhece data ou hora ou hora e data
+
+    nextState = DATA
+
+    # Manda /query com o input do usuário para o API.AI
+    request = ai.text_request()
+    request.session_id = session_id
+    request.query = msg
+
+    # Pega as entities reconhecidas
+    response = json.loads(request.getresponse().read())
+    slots = response['result']['parameters']
+
+    # Checa quais entidades foram reconhecidas, e atualiza o estado do sistema
+    if not slots:
+        nextState = DATA
+
+    if not slots['date']:
+        nextState = DATA
+
+    elif not slots['time']:
+        data['data'] = slots['date']
+        nextState = HORA
+
+    else:
+        data['data'] = slots['tipo-compromisso']
+        data['hora'] = slots['time']
+        nextState = COMPLETE
+
     return nextState
+
+def processFinalize(msg, data):
+    return COMPLETE

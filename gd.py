@@ -1,81 +1,142 @@
-import apiai, json
-from processor import *
+from dialog_act import *
 from Constants import *
-
-def processMsg(msg, state, data):
-
-    #   É o semantizador e gerenciador de diálogo. De acordo com o estado atual do sistema,
-    # chama a função correspondente (estão em processor.py) passando 
-    # a mensagem do usuário e o vetor de slots to fill. As funções retornam
-    # o novo estado do sistema.
-
-    if state == STARTUP:
-        newState = processStartup(msg, data)
-    if state == TIPO:
-        newState = processStartup(msg, data)
-    if state == PARTICIPANTES:
-        newState = processParticipantes(msg, data)
-    if state == LOCAL:
-        newState = processLocal(msg, data)
-    if state == DATA:
-        newState = processData(msg, data)
-    if state == HORA:
-        newState = processHora(msg, data)
-    if state == COMPLETE:
-        newState = processFinalize(msg, data)
-
-    return newState
+from auxfunc import *
+import requests, Levenshtein, json
 
 
-def generateResponse(state, data):
+dialog_state = {'intent': False, 'type': '', 'participants': [], 'place': '', 'date': '', 'time': '', 'address': ''}
+agenda_act = dialog_act_extended('', [], []) # ato dialogal que esperamos receber no momento
 
-    # É o gerenciador de linguagem. Retorna a resposta a ser encaminhada ao usuário
-    # dependendo do estado retornado pelo GD
+def get_dialog_state():
+    return dialog_state
 
-    if state == STARTUP:
-        return("Não entendi. Vocẽ quer marcar um compromisso?")
-    if state == TIPO:
-        return("Que tipo de compromisso você gostaria de marcar?")
-    if state == PARTICIPANTES:
-        return("Com quem?")
+
+def process_dialog_act(act):
+
+    # Função principal.
+    # A implementar: a estrutura geral descrita no TCC do Edson e Lucas
+
+    # Processa a msg assumindo que seu conteúdo está certo (após a checagem semântica, a ser implementada) 
+    new_act = process_content(act, agenda_act, dialog_state)
+    print(dialog_state)
     
-    if state == LOCAL:
-        return("Onde?")
-    if state == LOCAL_CONFIRM:
-        msg = "Ah, o " + data['local'] + " que fica em " + data['endereco'] + "?"
-        return(msg)
+    return new_act
 
-    if state == DATA:
-        return("Que dia?")
-    if state == HORA:
-        return("Que horas?")
-    if state == COMPLETE:
-        return("Obrigado, vou tentar marcar o compromisso com os outros!")
+
+def process_content(act, agenda, dialog_state):
+    
+    # Checa a função do ato dialogal e processa o conteúdo da maneira correspondente
+    # Podemos implementar seguindo o modelo dos agentes: nesse caso, cada agente é
+    # uma função que processa determinado tipo de msg
+
+    if type(act.function) == list:
+        for function, content in zip(act.function, act.content):
+            if function == 'inform_intent':
+                dialog_state['intent'] = content
+            if function == 'inform_type':
+                dialog_state['type'] = content
+            if function == 'inform_date':
+                dialog_state['date'] = content
+            if function == 'inform_time':
+                dialog_state['time'] = content
+
+        new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
+        return new_act
+
+    if act.function == 'inform_place':    
+        new_act, agenda = process_place(act, agenda, dialog_state)
+        return new_act
+    
+    if act.function == 'inform_participants':
+        dialog_state['participants'] = act.content
+        new_act, agenda = check_slots_filled(dialog_state)  
+        return new_act
+
+    return dialog_act('', '')
+
+def process_place(act, agenda, dialog_state):
+    
+    # Processa uma mensagem do usuário quando estamos esperando o nome do local do compromisso.
+    #
+    # Fazemos uma busca no Places API por um local com tal nome. Comparamos o nome
+    # do primeiro local obtido com o dado pelo usuário por meio da distância de Leveinshtein, que retorna um índice de 
+    # similaridade entre duas strings. 
+    
+    nomeDado = act.content
+
+    # Formatando a URL para o request à Places API
+    base_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+    if dialog_state['type']:
+        parameters = {'query': nomeDado, 'location': SAOPAULO, 'radius': '5000', 'type': translate_type[dialog_state['type']], 'key': API_KEY}
+    else:
+        parameters = {'query': nomeDado, 'location': SAOPAULO, 'radius': '5000', 'key': API_KEY}
+    request_url = format_url(base_url, parameters)
+
+
+    # Recebendo a resposta da API
+    r = requests.get(request_url)
+    response = r.json()
+
+    print(response)
+
+    # Checar o que veio na resposta, e, se houve algum resultado, checar a similaridade entre o nome do estabelecimento achado e o dado
+    if response['status'] == 'OK':
+        nomeAchado = response['results'][0]['name']
+        enderecoAchado = response['results'][0]['formatted_address']
         
+        # Índice de diferença entre duas strings: quanto menor, mais parecidas as duas palavras
+        stringDistance = float(Levenshtein.distance(nomeDado, nomeAchado)) / len(nomeDado)
 
-def main():
+        if stringDistance < 0.4:
+            dialog_state['place'] = nomeAchado
+            dialog_state['address'] = enderecoAchado 
+            new_act = dialog_act('confirm_address', enderecoAchado)
+            agenda = dialog_act_extended('accept_or_refuse', 'confirm_address', enderecoAchado)
+            return new_act, agenda
 
-    # Começando...
+        # No else, para que estado transitar? Algum que aceita um nome sem ele estar no Places API? Implementar
+        else:
+            pass
 
-    state = STARTUP
+    elif response['status'] == 'ZERO_RESULTS':
+        dialog_state['place'] = nomeDado
+        new_act = dialog_act('confirm_place_notondb', nomeDado)
+        agenda = dialog_act_extended('accept_or_refuse', 'confirm_place_notondb', nomeDado)
+        return new_act, agenda
+
+    return dialog_act(None, None), agenda
+
+
+def check_slots_filled(dialog_state):
+
+    # procura quais slots ainda devem ser preenchidos, e escolhe uma pergunta a ser feita
+
+    if not dialog_state['type']:
+        new_act = dialog_act('ask_type', None)
+        agenda = dialog_act('inform_type', None)
+        return new_act,agenda
     
-    # Slots a serem preenchidos pelo diálogo inicial. 'intent' representa a intenção do usuário de marcar um compromisso
-    data = {'intent': False, 'tipo': '', 'participantes': [], 'local': '', 'data': '', 'hora': '', 'endereco': ''}
-
-    while True:
-
-        print(u"> ", end=u"")
-        user_message = input()
-
-        if user_message == u"exit":
-            break
-
-        # Mensagem do usuário é passado ao processMsg, que atua como semantizador e gerenciador de diálogo e atualiza o 'state'
-        state = processMsg(user_message, state, data)
-        # Novo estado é passado ao gerenciador de linguagem
-        response = generateResponse(state, data)
-
-        print("< %s" % response)
-
-if __name__ == 'main':
-    main()
+    elif not dialog_state['participants']:
+        new_act = dialog_act('ask_participants', None)
+        agenda = dialog_act('inform_participants', None)
+        return new_act,agenda
+    
+    elif not dialog_state['place']:
+        new_act = dialog_act('ask_place', None)
+        agenda = dialog_act('inform_place', None)
+        return new_act,agenda
+    
+    elif not dialog_state['date']:
+        new_act = dialog_act('ask_date', None)
+        agenda = dialog_act('inform_date', None)
+        return new_act,agenda
+    
+    elif not dialog_state['time']:
+        new_act = dialog_act('ask_time', None)
+        agenda = dialog_act('inform_time', None)
+        return new_act,agenda
+    
+    else:
+        new_act = dialog_act('confirm_specifications', None)
+        agenda = dialog_act_extended('accept_or_refuse','complete', None)
+        return new_act,agenda
