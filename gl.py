@@ -19,19 +19,26 @@ def generate_response(act, dialog_state):
         return('Que horas?')
     elif func == 'ask_participants':
         return('Com quem?')
+    elif func == 'ask_all':
+        return('O que você gostaria de mudar?')
 
 
     elif func == 'confirm_specifications':
         msg = ('Então você gostaria de marcar um ' + dialog_state['type'] + ' no ' + dialog_state['place']
-                + ' no dia ' + dialog_state['date'] + ' às ' + dialog_state['time'] + ' com ' + dialog_state['participants']
+                + ' no dia ' + dialog_state['date'] + ' às ' + dialog_state['time'] + ' com ' + ', '.join(dialog_state['participants'])
                 + ' ?')
         return msg  
 
-    elif func == 'confirm_address':
-        msg = 'Achamos o local ' + dialog_state['place'] + 'que fica no endereço ' + dialog_state['address'] + '. Confirma?'
+    elif func == 'confirm_place':
+        msg = 'Achamos o local ' + act.content[0] + 'que fica no endereço ' + act.content[1] + '. Confirma?'
         return msg
     elif func == 'confirm_place_notondb':
-        msg = 'Não achamos o local' + dialog_state['place'] + ' na nossa base de dados. Confirma o local mesmo assim?'
+        msg = 'Não achamos o local' + act.content + ' na nossa base de dados. Confirma o local mesmo assim?'
         return msg
+
+    elif func == None:
+        pass
+    else:
+        print('funcao nao reconhecida pelo GL:' + str(func))
 
     return("Não entendi. Vocẽ quer marcar um compromisso?")
