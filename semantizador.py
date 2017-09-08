@@ -12,7 +12,7 @@ def semantize_msg(msg):
 
     global old_slots
 
-    new_act = dialog_act(None, None)
+    new_act = dialog_act(None, msg) # ato dialogal a ser passado em último caso, para tratamento do erro de entendimento
     msg = msg.lower()  #lowercase
 
     # Primeiro caso tratado: fala é um 'sim' ou 'nao'
@@ -72,12 +72,15 @@ def semantize_msg(msg):
 
     if not 'parameters' in response['result']: # não houve resposta
         return new_act
-
-
     slots = response['result']['parameters']
+    if 'verbos-compromisso' not in slots:
+        return new_act
 
     new_act = compare_dicts(slots, old_slots)  
-    old_slots = old_slots                      
+    old_slots = slots               
+
+    if not new_act.function:
+        new_act.content = msg
 
     return new_act
 

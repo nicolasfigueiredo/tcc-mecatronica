@@ -17,8 +17,13 @@ def process_dialog_act(act):
     # A implementar: a estrutura geral descrita no TCC do Edson e Lucas
     global agenda_act, dialog_state
 
+    if not act.function:
+        new_act, agenda = process_error(act, agenda_act, dialog_state)
+
+
     # Processa a msg assumindo que seu conteúdo está certo (após a checagem semântica, a ser implementada) 
-    new_act, agenda = process_content(act, agenda_act, dialog_state)
+    else:
+        new_act, agenda = process_content(act, agenda_act, dialog_state)
     
     agenda_act = agenda
     print(dialog_state)
@@ -29,6 +34,59 @@ def process_dialog_act(act):
         pass
 
     return new_act
+
+def process_error(act, agenda, dialog_state):
+
+    # Recebe um ato dialogal que não foi entendido, checa a agenda para decidir como proceder
+    # Dependendo do tipo de expectativa do sistema, prosseguirá de um dos seguintes jeitos:
+    # 
+    #   1 - Repetirá a pergunta.
+    #   2 - Confirma se o que recebeu é a informação que estava esperando (ex: a palavra não entendida é o nome do restaurante)
+    #
+
+    if agenda.function == 'inform_type':
+        new_act = dialog_act('ask_type', 'retry')
+        agenda = dialog_act('inform_type', None)
+        return new_act, agenda
+
+    elif agenda.function == 'inform_place':
+        new_act = dialog_act('confirm_place_error', act.content)
+        agenda = dialog_act('confirm_place', act.content)
+        return new_act, agenda
+
+    elif agenda.function == 'inform_participants':
+        participants = act.content.split(' ')
+        for word in participants:
+            if len(word) < 3:
+                participants.remove(word)
+
+        new_act = dialog_act('confirm_participants', participants)
+        agenda = dialog_act('confirm_participants', participants)
+        return new_act, agenda
+
+    elif agenda.function == 'inform_date':
+        new_act = dialog_act('ask_date', 'retry')
+        agenda = dialog_act('inform_date', None)
+        return new_act, agenda        
+
+    elif agenda.function == 'inform_time':
+        new_act = dialog_act('ask_time', 'retry')
+        agenda = dialog_act('inform_time', None)
+        return new_act, agenda
+
+    elif not agenda.function:
+        pass
+
+    elif agenda.function[:7] == 'confirm':
+        new_act = dialog_act(agenda.function, agenda.content)
+        return new_act, agenda
+
+    
+    new_act = dialog_act('handle_error', None)
+    agenda = dialog_act(None, None)
+    return new_act, agenda
+
+
 
 
 def process_content(act, agenda, dialog_state):
@@ -58,6 +116,11 @@ def process_content(act, agenda, dialog_state):
             new_act, agenda = process_confirm_all(act, agenda, dialog_state)
             return new_act, agenda
 
+        elif agenda.function == 'confirm_participants':
+            new_act, agenda = process_participants_c(act, agenda, dialog_state)
+            return new_act, agenda
+
+
         else:
             # Tratar o erro
             pass
@@ -70,6 +133,18 @@ def process_participants(act, dialog_state):
     dialog_state['participants'] = act.content
     new_act, agenda = check_slots_filled(dialog_state)
     return new_act, agenda  
+
+def process_participants_c(act, agenda, dialog_state):
+    if act.content == 'accept':
+        dialog_state['participants'] = agenda.content
+        new_act, agenda = check_slots_filled(dialog_state)
+    else:
+        new_act = dialog_act('ask_participants', 'retry')
+        agenda = dialog_act('inform_participants', None)
+
+    return new_act, agenda
+
+
 
 def process_confirm_all(act, agenda, dialog_state):
     if act.content == 'accept':
@@ -203,6 +278,6 @@ def check_slots_filled(dialog_state):
         return new_act,agenda
     
     else:
-        new_act = dialog_act('confirm_specifications', None)
+        new_act = dialog_act('confirm_all', None)
         agenda = dialog_act('confirm_all', None)
         return new_act,agenda

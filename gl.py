@@ -6,24 +6,32 @@ def generate_response(act, dialog_state):
     # dependendo do ato dialogal encaminhado pelo GD
 
     func = act.function
+    msg = ''
 
-    if func == '':
+    if not func:
         return("Não entendi. Vocẽ quer marcar um compromisso?")
-    elif func == 'ask_type':
-        return("Que tipo de compromisso você gostaria de marcar?")
+    
+    if func == 'handle_error':
+        return("Não entendi, tente dizer mais sobre o seu compromisso")
+
+    if act.content == 'retry':
+        msg = "Não entendi. "
+
+    if func == 'ask_type':
+        return(msg+"Que tipo de compromisso você gostaria de marcar?")
     elif func == 'ask_place':
-        return('Onde?')
+        return(msg+'Onde você gostaria de marcar o compromisso?')
     elif func == 'ask_date':
-        return('Que dia?')
+        return(msg+'Que dia você gostaria de marcar?')
     elif func == 'ask_time':
-        return('Que horas?')
+        return(msg+'Que horas você gostaria de marcar?')
     elif func == 'ask_participants':
-        return('Com quem?')
+        return(msg+'Com quem você vai?')
     elif func == 'ask_all':
         return('O que você gostaria de mudar?')
 
 
-    elif func == 'confirm_specifications':
+    elif func == 'confirm_all':
         msg = ('Então você gostaria de marcar um ' + dialog_state['type'] + ' no ' + dialog_state['place']
                 + ' no dia ' + dialog_state['date'] + ' às ' + dialog_state['time'] + ' com ' + ', '.join(dialog_state['participants'])
                 + ' ?')
@@ -32,8 +40,17 @@ def generate_response(act, dialog_state):
     elif func == 'confirm_place':
         msg = 'Achamos o local ' + act.content[0] + 'que fica no endereço ' + act.content[1] + '. Confirma?'
         return msg
+
+    elif func == 'confirm_place_error':
+        msg = 'Não entendi, ' + act.content + ' é o nome do local do compromisso?'
+        return msg
+
     elif func == 'confirm_place_notondb':
         msg = 'Não achamos o local' + act.content + ' na nossa base de dados. Confirma o local mesmo assim?'
+        return msg
+
+    elif func == 'confirm_participants':
+        msg = 'Não entendi, você quer marcar com ' + ', '.join(act.content) + '?'
         return msg
 
     elif func == None:
