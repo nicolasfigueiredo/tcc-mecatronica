@@ -65,12 +65,14 @@ def semantize_msg(msg):
 
     # Pega as entities reconhecidas
     response = json.loads(request.getresponse().read())
+    print(response)
     if not 'result' in response:
         print('NETWORK ERROR')
         return None
 
     if not 'parameters' in response['result']: # não houve resposta
         return new_act
+
 
     slots = response['result']['parameters']
 
@@ -93,6 +95,9 @@ def compare_dicts(new, old):
         for slot in slots:
             if new[slot]:
                 entities_recognized[slot] = new[slot]
+
+    elif 'verbos-compromisso' not in new:
+        return dialog_act(None, None)
 
     else:
         for slot in slots:

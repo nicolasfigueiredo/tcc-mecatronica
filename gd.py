@@ -15,12 +15,14 @@ def process_dialog_act(act):
 
     # Função principal.
     # A implementar: a estrutura geral descrita no TCC do Edson e Lucas
-
     global agenda_act, dialog_state
+
     # Processa a msg assumindo que seu conteúdo está certo (após a checagem semântica, a ser implementada) 
     new_act, agenda = process_content(act, agenda_act, dialog_state)
+    
     agenda_act = agenda
     print(dialog_state)
+    
     if dialog_state['finished'] is True:
         #call_blackboard()
         print('\n\n\n Diálogo completo. \n\n\n')
