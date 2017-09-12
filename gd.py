@@ -15,6 +15,9 @@ def process_dialog_act(act):
     # A implementar: a estrutura geral descrita no TCC do Edson e Lucas
     global agenda_act, dialog_state
 
+    print("\n\nAgenda:\n")
+    agenda_act.print()
+
     if not act.function:
         new_act, agenda = process_error(act, agenda_act, dialog_state)
 
@@ -24,7 +27,10 @@ def process_dialog_act(act):
         new_act, agenda = process_content(act, agenda_act, dialog_state)
     
     agenda_act = agenda
+    print("\n\nEstado do diálogo:\n")
     print(dialog_state)
+    print("\n\nAgenda:\n")
+    agenda.print()
     
     if dialog_state['finished'] is True:
         #call_blackboard()

@@ -65,7 +65,10 @@ def semantize_msg(msg):
 
     # Pega as entities reconhecidas
     response = json.loads(request.getresponse().read())
+    
+    print("\n\nResposta da API.AI:\n")
     print(response)
+    
     if not 'result' in response:
         print('NETWORK ERROR')
         return None

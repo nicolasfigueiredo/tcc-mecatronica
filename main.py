@@ -23,12 +23,16 @@ def main():
 	    print(u"> ", end=u"")
 	    user_message = input()
 
+	    print('\n\n\n\n=================================\n')
 	    dialog_act = semantize_msg(user_message)
+	    print("\n\nAto dialogal retornado pelo semantizador:\n")
 	    dialog_act.print()
 
 	    dialog_act = process_dialog_act(dialog_act)
+	    print("\n\nAto dialogal retornado pelo GD:\n")
 	    dialog_act.print()
 
+	    print('\n=================================\n\n\n\n')
 	    msg = generate_response(dialog_act, get_dialog_state())
 	    print("< " + str(msg))
 

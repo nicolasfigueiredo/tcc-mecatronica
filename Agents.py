@@ -29,6 +29,7 @@ class Agent_Place:
 	    r = requests.get(request_url)
 	    response = r.json()
 
+	    print("\n\nResposta do Places API:\n")
 	    print(response)
 
 	    # Checar o que veio na resposta, e, se houve algum resultado, checar a similaridade entre o nome do estabelecimento achado e o dado
@@ -70,7 +71,7 @@ class Agent_Place:
 
 	        elif act.content == 'refuse':
 	            new_act = dialog_act('ask_place', None)
-	            agenda = dialog_act(None, None)
+	            agenda = dialog_act('inform_place', None)
 	            return new_act, agenda
 
 	    else:
