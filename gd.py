@@ -108,6 +108,10 @@ def process_content(act, agenda, dialog_state):
         new_act, agenda = Agent_Participants.process_msg(act, dialog_state)
         return new_act, agenda
 
+    if act.function == 'inform_participants_by_relationship':
+        new_act, agenda = Agent_Participants.process_msg_relationship(act, dialog_state)
+        return new_act, agenda
+
     if act.function == 'accept_or_refuse':  # checa agenda para ver qual pergunta foi feita
         if agenda.function == 'confirm_place' or agenda.function == 'confirm_place_notondb':
             new_act, agenda = Agent_Place.process_confirm(act, agenda, dialog_state)

@@ -6,8 +6,16 @@ from initialize_db import *
 import requests, Levenshtein, json
 import pandas as pd
 
-nomes_db = initialize_basedOnOntology()
+nomes_db = initialize_peopleDB()
 print(nomes_db.head())
+
+def translate_relationship(relationship):
+    if relationship == 'mae':
+        return('isMotherOf')
+    if relationship == 'dentista':
+        return('isDentistOf')
+    return relationship
+
 
 class Agent_Place:
 
@@ -107,6 +115,23 @@ class Agent_Participants:
     ambiguidades = []
     participantes_sem_ontologia = []
     participantes_confirmados = []
+
+
+    def process_msg_relationship(act, dialog_state):
+
+        relationship = translate_relationship(act.content)
+
+        if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1:
+            new_act = dialog_act('confirm_full_name', nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo'].iloc[0])
+            agenda = new_act
+            return new_act, agenda
+
+        # else: nao conhecemos essa relacao
+
+        new_act = dialog_act('retry_relationship', relationship)
+        agenda = dialog_act('inform_participants', None)
+        return new_act, agenda
+ 
 
     def process_msg(act, dialog_state):
 

@@ -68,9 +68,9 @@ def generate_response(act, dialog_state):
             msg = 'Não conheço ' + act.content + '. Isso quer dizer que não vou conseguir negociar o horário do evento com ele/a, tudo bem?'
         return msg
 
-
-
-
+    elif func == 'retry_relationship':
+        msg = 'Desculpe, não conheço ninguém com o tipo de relacinamento ' + act.content + ' com você. Tente especificar a pessoa pelo nome.'
+        return msg
 
 
     elif func == None:

@@ -23,6 +23,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isDentistOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isDentistOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isHeartDoctorOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isHeartDoctorOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isLocalOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isLocalOf">
@@ -30,6 +48,15 @@
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#takesPlaceAt"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isMotherOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isMotherOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
     </owl:ObjectProperty>
     
 
@@ -311,6 +338,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#dentista1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#dentista1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <ontologia-tcc:isDentistOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
+        <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucas Schor</ontologia-tcc:hasName>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#festa_do_joao -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#festa_do_joao">
@@ -338,12 +375,31 @@
     
 
 
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#katia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#katia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <ontologia-tcc:isMotherOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
+        <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Katia Perissini</ontologia-tcc:hasName>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#maria -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#maria">
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int">19</ontologia-tcc:hasAge>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Hueb</ontologia-tcc:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+        <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nicolas Figueiredo</ontologia-tcc:hasName>
     </owl:NamedIndividual>
     
 

@@ -33,8 +33,14 @@ def main():
 	    dialog_act.print()
 
 	    print('\n=================================\n\n\n\n')
+	    
+	    if get_dialog_state()['finished'] is True:
+	    	break
+	    
 	    msg = generate_response(dialog_act, get_dialog_state())
 	    print("< " + str(msg))
+
+	print("\n\n\n\n Diálogo completo.\n\nInicializando blackboard...")
 
 if __name__ == '__main__':
     main()
