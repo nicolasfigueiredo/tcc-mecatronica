@@ -40,12 +40,16 @@ def semantize_msg(msg):
 
     # Terceiro: quero marcar com [lista pessoas]
     if 'com ' in msg:
+        names = []
         new_act.function = 'inform_participants'
         content = msg[msg.find('com '):].split(' ')[1:]     # pega lista de palavras depois de 'com '
         for word in content:    # remove palavras com menos de 3 letras
-            if len(word) < 3:
-                content.remove(word)
-        new_act.content = content
+            if len(word) >= 3:
+                if word[-1] == ',':
+                    names.append(word[:-1])
+                else:
+                    names.append(word)
+        new_act.content = names
         return new_act
 
     # Quarto: local

@@ -32,11 +32,6 @@ def process_dialog_act(act):
     print("\n\nAgenda:\n")
     agenda.print()
     
-    if dialog_state['finished'] is True:
-        #call_blackboard()
-        print('\n\n\n Diálogo completo. \n\n\n')
-        pass
-
     return new_act
 
 def process_error(act, agenda, dialog_state):
@@ -67,6 +62,11 @@ def process_error(act, agenda, dialog_state):
         new_act = dialog_act('confirm_participants', participants)
         agenda = dialog_act('confirm_participants', participants)
         return new_act, agenda
+
+    elif agenda.function == 'resolve_ambiguity':
+        new_act, agenda = Agent_Participants.resolve_ambiguity(act, agenda, dialog_state)
+        return new_act, agenda
+
 
     elif agenda.function == 'inform_date':
         new_act = dialog_act('ask_date', 'retry')
@@ -117,7 +117,7 @@ def process_content(act, agenda, dialog_state):
             new_act, agenda = process_confirm_all(act, agenda, dialog_state)
             return new_act, agenda
 
-        elif agenda.function == 'confirm_participants':
+        elif agenda.function == 'confirm_participants' or agenda.function == 'confirm_full_name' or agenda.function == 'confirm_participants_notondb':
             new_act, agenda = Agent_Participants.process_confirm(act, agenda, dialog_state)
             return new_act, agenda
 

@@ -53,9 +53,32 @@ def generate_response(act, dialog_state):
         msg = 'Não entendi, você quer marcar com ' + ', '.join(act.content) + '?'
         return msg
 
+    elif func == 'resolve_ambiguity':
+        msg = 'Conheço algumas pessoas com esse nome: ' + ', '.join(act.content) +' .Qual dessas você quer convidar?'
+        return msg
+
+    elif func == 'confirm_full_name':
+        msg = 'Você quer convidar ' + act.content + ' para o evento?'
+        return msg
+
+    elif func == 'confirm_participants_notondb':
+        if type(act.content) is list:
+            msg = 'Não conheço essas pessoas: ' + ', '.join(act.content) +'. Isso quer dizer que não vou conseguir negociar o horário do evento com elas, tudo bem?'
+        else:
+            msg = 'Não conheço ' + act.content + '. Isso quer dizer que não vou conseguir negociar o horário do evento com ele/a, tudo bem?'
+        return msg
+
+
+
+
+
+
     elif func == None:
         pass
     else:
         print('funcao nao reconhecida pelo GL:' + str(func))
+
+
+
 
     return("Não entendi. Vocẽ quer marcar um compromisso?")
