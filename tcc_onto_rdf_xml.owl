@@ -370,7 +370,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joao2">
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
-        <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Vasquez</ontologia-tcc:hasName>
+        <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Silva</ontologia-tcc:hasName>
     </owl:NamedIndividual>
     
 

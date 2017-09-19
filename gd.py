@@ -53,12 +53,8 @@ def process_error(act, agenda, dialog_state):
         agenda = dialog_act('confirm_place', act.content)
         return new_act, agenda
 
-    elif agenda.function == 'inform_participants':
-        participants = act.content.split(' ')
-        for word in participants:
-            if len(word) < 3:
-                participants.remove(word)
-
+    elif agenda.function == 'inform_participants': 
+        participants = [word for word in act.content.split(' ') if len(word) >= 3]
         new_act = dialog_act('confirm_participants', participants)
         agenda = dialog_act('confirm_participants', participants)
         return new_act, agenda

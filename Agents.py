@@ -9,14 +9,6 @@ import pandas as pd
 nomes_db = initialize_peopleDB()
 print(nomes_db.head())
 
-def translate_relationship(relationship):
-    if relationship == 'mae':
-        return('isMotherOf')
-    if relationship == 'dentista':
-        return('isDentistOf')
-    return relationship
-
-
 class Agent_Place:
 
     def process_msg(act, agenda, dialog_state):
@@ -36,7 +28,6 @@ class Agent_Place:
         else:
             parameters = {'query': nomeDado, 'location': SAOPAULO, 'radius': '5000', 'key': API_KEY}
         request_url = format_url(base_url, parameters)
-
 
         # Recebendo a resposta da API
         r = requests.get(request_url)
@@ -116,18 +107,16 @@ class Agent_Participants:
     participantes_sem_ontologia = []
     participantes_confirmados = []
 
-
     def process_msg_relationship(act, dialog_state):
 
         relationship = translate_relationship(act.content)
 
-        if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1:
+        if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1: # se há alguém com esse tipo de relacionamento na DB
             new_act = dialog_act('confirm_full_name', nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo'].iloc[0])
             agenda = new_act
             return new_act, agenda
 
         # else: nao conhecemos essa relacao
-
         new_act = dialog_act('retry_relationship', relationship)
         agenda = dialog_act('inform_participants', None)
         return new_act, agenda
@@ -151,14 +140,17 @@ class Agent_Participants:
 
         for name in act.content:
             if len(name.split(' ')) == 1:   # foi informado apenas o primeiro nome ou sobrenome
+                # Correspondencia única
                 if len(nomes_db[nomes_db['Primeiro nome'] == name]) == 1:
                     Agent_Participants.participantes_a_confirmar.append(nomes_db[nomes_db['Primeiro nome'] == name].iloc[0]['Nome completo'])
                 elif len(nomes_db[nomes_db['Sobrenome'] == name]) == 1:
                     Agent_Participants.participantes_a_confirmar.append(nomes_db[nomes_db['Sobrenome'] == name].iloc[0]['Nome completo'])
+                # Ambiguidade
                 elif len(nomes_db[nomes_db['Primeiro nome'] == name]) > 1:
                     Agent_Participants.ambiguidades.append(list(nomes_db[nomes_db['Primeiro nome'] == name]['Nome completo']))
                 elif len(nomes_db[nomes_db['Sobrenome'] == name]) > 1:
                     Agent_Participants.ambiguidades.append(list(nomes_db[nomes_db['Sobrenome'] == name]['Nome completo']))
+                # Else nome nao está na DB
                 else:
                     Agent_Participants.participantes_sem_ontologia.append(name)
 
@@ -180,8 +172,7 @@ class Agent_Participants:
     def process_confirm(act, agenda, dialog_state):
         if agenda.function == 'confirm_participants':
             if act.content == 'accept':
-                dialog_state['participants'] = agenda.content
-                new_act, agenda = check_slots_filled(dialog_state)
+                new_act, agenda = process_msg(act, dialog_state)
             else:
                 new_act = dialog_act('ask_participants', 'retry')
                 agenda = dialog_act('inform_participants', None)
@@ -205,23 +196,32 @@ class Agent_Participants:
                 return new_act, agenda
 
     def resolve_ambiguity(act, agenda, dialog_state):
-        nome_dado = act.content
         nomes_possiveis = agenda.content
+        nomes_dados = [nome for nome in act.content.split(' ') if len(nome)>1]
 
-        for nome in nomes_possiveis:
-            if nome == nome_dado:
-                dialog_state['participants'].append(nome)
-                new_act, agenda = Agent_Participants.check_lists_participants()
-                if not new_act:
-                    new_act, agenda = check_slots_filled(dialog_state)
-                return new_act, agenda
+        if len(nomes_dados) == 2:
+            nome_dado = ' '.join(nomes_dados)
+            for nome in nomes_possiveis:
+                if nome == nome_dado:
+                    dialog_state['participants'].append(nome)
+                    new_act, agenda = Agent_Participants.check_lists_participants()
+                    if not new_act:
+                        new_act, agenda = check_slots_filled(dialog_state)
+                    return new_act, agenda
+        if len(nomes_dados) == 1:
+            nome_dado = nomes_dados[0]
+            for nome_possivel in nomes_possiveis:
+                if nome_dado in nome_possivel: # nome dado faz parte de um nome possivel, ou seja, é sobrenome ou primeiro nome
+                    dialog_state['participants'].append(nome_possivel)
+                    new_act, agenda = Agent_Participants.check_lists_participants()
+                    if not new_act:
+                        new_act, agenda = check_slots_filled(dialog_state)
+                    return new_act, agenda
 
         # else: nome dado não está na DB, checar se isso é ok
         new_act = dialog_act('confirm_participants_notondb', nome_dado)
         agenda = new_act
         return new_act, agenda
-
-
 
     def check_lists_participants():
         if len(Agent_Participants.ambiguidades) > 0:
