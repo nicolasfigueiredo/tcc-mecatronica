@@ -1,0 +1,17 @@
+u: Oi
+s: Não entendi, tente dizer mais sobre o seu compromisso
+u: quero marcar um almoço
+s: Com quem você vai?
+u: Com o joao e a maria
+s: Conheço algumas pessoas com esse nome: joao azambuja, joao silva .Qual dessas você quer convidar?
+u: o silva
+s: Você quer convidar maria hueb para o evento?
+u: Sim
+s: Onde você gostaria de marcar o compromisso?
+u: No bandeijão
+s: Não achamos o localbandeijão na nossa base de dados. Confirma o local mesmo assim?
+u: Sim
+s: Que dia você gostaria de marcar?
+u: Amanhã às duas da tarde
+s: Então você gostaria de marcar um restaurante no bandeijão no dia 2017-09-27 às 14:00:00 com joao silva, maria hueb ?
+u: Sim

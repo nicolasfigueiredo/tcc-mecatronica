@@ -1,0 +1,15 @@
+u: quero marcar um jantar
+s: Não entendi, tente dizer mais sobre o seu compromisso
+u: quero amrcar um jantar amanhã
+s: Com quem você vai?
+u: com a minha mãe
+s: Você quer convidar katia perissini para o evento?
+u: sim
+s: Onde você gostaria de marcar o compromisso?
+u: No bar da dona onça
+s: Achamos o local Bar da Dona Onçaque fica no endereço Edifício Copan - Av. Ipiranga, 200 - 27 e 29 - Centro, São Paulo - SP, 01046-925, Brazil. Confirma?
+u: Sim
+s: Então você gostaria de marcar um restaurante no Bar da Dona Onça no dia 2017-09-27 às 01:00:00 com katia perissini ?
+u: às oito da noite
+s: Então você gostaria de marcar um restaurante no Bar da Dona Onça no dia 2017-09-27 às 20:00:00 com katia perissini ?
+u: sim

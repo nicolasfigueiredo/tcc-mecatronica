@@ -53,7 +53,7 @@ def semantize_msg(msg):
         return new_act
 
     # Quarto: local
-    x = max(msg.rfind('no '), msg.rfind('na '))     # informa local
+    x = max(msg.rfind('no '), msg.rfind(' na '))     # informa local
     if x > -1:      # achamos alguma das expressões e ela começa no índice x
         new_act.function = 'inform_place'
         new_act.content = msg[x+3:]     # pega resto da msg depois de 'no' ou 'na'

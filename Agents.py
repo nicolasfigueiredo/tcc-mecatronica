@@ -3,7 +3,7 @@ from Constants import *
 from auxfunc import *
 from initialize_db import *
 
-import requests, Levenshtein, json
+import requests, json, Levenshtein
 import pandas as pd
 
 nomes_db = initialize_peopleDB()

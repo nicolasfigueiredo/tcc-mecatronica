@@ -1,0 +1,11 @@
+{
+	"task": "accept_invite",
+	"event": {
+		"host": "Joao Silva",
+		"participants": ["Joao Gomes", "Maria Joana"],
+		"type": "almoço",
+		"local": "Quitandinha",
+		"date": "2017-10-10",
+		"time": "16:00:00"
+		}
+}

@@ -65,7 +65,7 @@ def generate_response(act, dialog_state):
         if len(act.content) > 1:
             msg = 'Não conheço essas pessoas: ' + ', '.join(act.content) +'. Isso quer dizer que não vou conseguir negociar o horário do evento com elas, tudo bem?'
         else:
-            msg = 'Não conheço ' + act.content + '. Isso quer dizer que não vou conseguir negociar o horário do evento com ele/a, tudo bem?'
+            msg = 'Não conheço ' + act.content[0] + '. Isso quer dizer que não vou conseguir negociar o horário do evento com ele/a, tudo bem?'
         return msg
 
     elif func == 'retry_relationship':
