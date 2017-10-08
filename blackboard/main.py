@@ -20,7 +20,7 @@ def main():
     # 4 - O ato dialogal é passado ao GL, que responde com uma string a ser comunicada ao usuário
     # with open(file_name, 'w') as f:
 
-    act = gd_bboard.startup('example.json')
+    act = gd_bboard.startup('example_consult_time.json')
     msg = gl_bboard.generate_response(act)
     print(msg)
 

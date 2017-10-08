@@ -30,6 +30,11 @@ def startup(task):
         agenda_act = dialog_act("propose_invite", event) 
         return agenda_act
 
+    if json_data['task'] == 'check_alternate_time':
+        dialog_state['accept_alternate_time'] = None
+        agenda_act = dialog_act('check_alternate_time', json_data)
+        return agenda_act
+
 def get_dialog_state():
     return dialog_state
 
@@ -88,6 +93,13 @@ def process_content(act, agenda, dialog_state, event):
         return new_act, agenda
 
     elif act.function == 'accept_or_refuse':
+
+        if agenda.function == "check_alternate_time":
+            if act.content == 'accept':
+                dialog_state['accept_alternate_time'] = True
+            elif act.content == 'refuse':
+                dialog_state['accept_alternate_time'] = False
+            return dialog_act('finish_dialog', ''), dialog_act('','')
 
         if agenda.function == 'propose_invite':         
             if act.content == 'accept':

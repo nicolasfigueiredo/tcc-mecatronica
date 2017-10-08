@@ -40,6 +40,17 @@ def generate_response(act):
     elif act.function == "finish_dialog":
         return "OK! Vou informar os outros participantes."
 
+    elif act.function == "check_alternate_time":
+        alt_time = act.content['alternate_time']
+        orig_time = act.content['original_time']
+        if alt_time['date'] == orig_time['date']:
+            msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + orig_time['date'] 
+                    + " das " + orig_time['time'] + " para as " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
+        else:
+            msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + orig_time['date'] +
+                    "para o dia " + alt_time['date'] + " às " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
+        return msg
+
 
     if not act.function:
         return("Não entendi. Vocẽ quer marcar um compromisso?")
@@ -50,7 +61,7 @@ def generate_response(act):
     elif act.function == None:
         pass
     else:
-        print('funcao nao reconhecida pelo GL:' + str(func))
+        print('funcao nao reconhecida pelo GL:' + str(act.function))
 
 
 
