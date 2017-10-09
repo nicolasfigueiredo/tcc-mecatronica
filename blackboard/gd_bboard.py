@@ -35,6 +35,11 @@ def startup(task):
         agenda_act = dialog_act('check_alternate_time', json_data)
         return agenda_act
 
+    if json_data['task'] == 'schedule_event':
+        event = json_data['event']
+        agenda_act = dialog_act('schedule_event', event)
+        return agenda_act
+
 def get_dialog_state():
     return dialog_state
 
@@ -93,6 +98,16 @@ def process_content(act, agenda, dialog_state, event):
         return new_act, agenda
 
     elif act.function == 'accept_or_refuse':
+
+        if agenda.function == 'schedule_event':
+            if act.content == 'accept':
+                # TO DO: integração com o Google Calendar
+                if True: # substituir por algo que retorna True se conseguiu marcar
+                    return dialog_act("schedule_success", ''), dialog_act('','')
+                else:
+                    return dialog_act("schedule_failure", ''), dialog_act('','')
+            if act.content == 'refuse':
+                return dialog_act("schedule_not_needed", ''), dialog_act('', '')
 
         if agenda.function == "check_alternate_time":
             if act.content == 'accept':

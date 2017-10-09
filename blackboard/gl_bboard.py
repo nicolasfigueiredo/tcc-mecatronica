@@ -51,6 +51,18 @@ def generate_response(act):
                     "para o dia " + alt_time['date'] + " às " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
         return msg
 
+    elif act.function == 'schedule_event':
+        event = act.content
+        msg = ("O " + event['type'] + " organizado por " + event['host'] + " acontecerá no dia " + event['date'] + " às " + event['time']
+                + " no local " + event['local'] + ". " + ", ".join(event['participants']) + " confirmaram presença. Vocẽ gostaria de " +
+                "incluir esse evento no seu Google Calendar?")
+        return msg
+
+    elif act.function == 'schedule_success':
+        return "Evento inserido!"
+    elif act.function == 'schedule_not_needed':
+        return "OK! Aproveite seu compromisso."
+
 
     if not act.function:
         return("Não entendi. Vocẽ quer marcar um compromisso?")
