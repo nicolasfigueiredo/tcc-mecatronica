@@ -1,11 +1,14 @@
 import sys
-sys.path.append("..")
+import json
+sys.path.append("../slot_filling")
 
 import semantizador
 from dialog_act import *
 from Constants import *
 import gl_bboard
 import gd_bboard
+from process_notification import process_notification
+import controller.controller
 
 def main():
 
@@ -20,32 +23,46 @@ def main():
     # 4 - O ato dialogal é passado ao GL, que responde com uma string a ser comunicada ao usuário
     # with open(file_name, 'w') as f:
 
-    act = gd_bboard.startup('example_schedule.json')
-    msg = gl_bboard.generate_response(act)
-    print(msg)
+    # act = gd_bboard.startup('example_schedule.json')
+    # msg = gl_bboard.generate_response(act)
+    # print(msg)
 
-    while True:
+    # while True:
 
-            print(u"> ", end=u"")
-            user_message = input()
+    #         print(u"> ", end=u"")
+    #         user_message = input()
 
-            # f.write('u: ' + user_message + '\n')
+    #         # f.write('u: ' + user_message + '\n')
 
-            print('\n\n\n\n=================================\n')
-            dialog_act = semantizador.semantize_msg(user_message)
-            print("\n\nAto dialogal retornado pelo semantizador:\n")
-            dialog_act.print()
+    #         print('\n\n\n\n=================================\n')
+    #         dialog_act = semantizador.semantize_msg(user_message)
+    #         print("\n\nAto dialogal retornado pelo semantizador:\n")
+    #         dialog_act.print()
 
-            dialog_act = gd_bboard.process_dialog_act(dialog_act)
-            print("\n\nAto dialogal retornado pelo GD:\n")
-            dialog_act.print()
+    #         dialog_act = gd_bboard.process_dialog_act(dialog_act)
+    #         print("\n\nAto dialogal retornado pelo GD:\n")
+    #         dialog_act.print()
 
-            print('\n=================================\n\n\n\n')
+    #         print('\n=================================\n\n\n\n')
             
             
-            msg = gl_bboard.generate_response(dialog_act)
-            print("< " + str(msg))
-            # f.write('s: ' + msg + '\n')
+    #         msg = gl_bboard.generate_response(dialog_act)
+    #         print("< " + str(msg))
+    #         # f.write('s: ' + msg + '\n')
+
+    userID = 2
+
+    partial_solution_path = 'json_examples/partial_solutions/event001.json'
+    partial_solution_file = open(partial_solution_path)
+    partial_solution_json = json.load(partial_solution_file)
+
+    notification = 'json_examples/notifications/example_invite.json'
+    notification, notification_answer = process_notification(notification)
+
+    ans = controller.controller.update_solution(partial_solution_json, userID, notification, notification_answer)
+    print(ans)
+
+
 
 
 if __name__ == '__main__':

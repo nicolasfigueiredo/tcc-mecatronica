@@ -1,6 +1,5 @@
 import sys
 import json
-sys.path.append("..")
 
 from dialog_act import *
 from Constants import *
@@ -9,17 +8,15 @@ dialog_state = {}
 event = {}
 agenda_act = dialog_act(None, None) # ato dialogal que esperamos receber no momento
 
-def startup(task):
+def startup(json_data):
     # Recebe um JSON descrevendo a tarefa do assistente (ex: apresentar o convite para um evento, 
     # consultar a disponibilidade do usuário em um horário proposto), prepara o dialog_state com as informações
     # que devem ser coletadas e a representação do evento sendo negociado
 
     global agenda_act, dialog_state, event
 
-    data_file = open(task)    
-    json_data = json.load(data_file)
-
     if json_data['task'] == 'accept_invite':
+        # dialog_state['task'] = 'accept_invite'
         dialog_state['accept_invite'] = None
         dialog_state['accept_original_time'] = None
         dialog_state['propose_alternate_time'] = None
@@ -31,11 +28,13 @@ def startup(task):
         return agenda_act
 
     if json_data['task'] == 'check_alternate_time':
+        # dialog_state['task'] = 'check_alternate_time'
         dialog_state['accept_alternate_time'] = None
         agenda_act = dialog_act('check_alternate_time', json_data)
         return agenda_act
 
     if json_data['task'] == 'schedule_event':
+        # dialog_state['task'] = 'schedule_event'
         event = json_data['event']
         agenda_act = dialog_act('schedule_event', event)
         return agenda_act
