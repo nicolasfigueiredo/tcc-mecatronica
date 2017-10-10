@@ -27,6 +27,11 @@ def semantize_msg(msg):
         new_act.content = 'accept'
         return new_act
 
+    if 'cancelar' in msg:
+        new_act.function = 'cancel_event'
+        new_act.content = ''
+        return new_act
+
     # Segundo caso: especificação de participantes por relacionamento, ex: "marque com meu irmão, minha mãe" 
     # Procura pelas preposições "meu" e "minha", e assume que o resto da frase contém um ou mais tipos de
     # relacionamento. No ex: ['irmão', 'mãe']

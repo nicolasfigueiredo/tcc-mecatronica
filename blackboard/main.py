@@ -56,7 +56,7 @@ def main():
     partial_solution_file = open(partial_solution_path)
     partial_solution_json = json.load(partial_solution_file)
 
-    notification = 'json_examples/notifications/example_invite.json'
+    notification = 'json_examples/notifications/define_final_time.json'
     notification, notification_answer = process_notification(notification)
 
     ans = controller.controller.update_solution(partial_solution_json, userID, notification, notification_answer)

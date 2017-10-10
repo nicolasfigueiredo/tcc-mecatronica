@@ -39,6 +39,17 @@ def startup(json_data):
         agenda_act = dialog_act('schedule_event', event)
         return agenda_act
 
+    if json_data['task'] == 'decide_final_time':
+        # dialog_state['task'] = 'check_alternate_time'
+        dialog_state['cancel_event'] = None
+        dialog_state['final_date'] = None
+        dialog_state['final_time'] = None
+        if len(json_data['possible_times']) == 1:
+            agenda_act = dialog_act('decide_final_time_oneoption', json_data)
+        else:
+            agenda_act = dialog_act('decide_final_time_multoptions', json_data)
+        return agenda_act
+
 def get_dialog_state():
     return dialog_state
 
@@ -86,7 +97,6 @@ def process_content(act, agenda, dialog_state, event):
     # uma função que processa determinado tipo de msg
 
     if type(act.function) == list:
-
         for function, content in zip(act.function, act.content):
             if function == 'inform_date':
                 dialog_state['alternate_date'] = content
@@ -137,6 +147,22 @@ def process_content(act, agenda, dialog_state, event):
             if act.content == 'refuse':
                 dialog_state['propose_alternate_time'] = False
                 return dialog_act('finish_dialog', ''), dialog_act('','')
+
+        if agenda.function == 'decide_final_time_oneoption':
+            if act.content == 'accept':
+                dialog_state['cancel_event'] = False
+                dialog_state['final_date'] = agenda.content['possible_times'][0]['date']
+                dialog_state['final_time'] = agenda.content['possible_times'][0]['time']
+                return dialog_act('finish_dialog', ''), dialog_act('','')
+            if act.content == 'refuse':
+                return dialog_act('cancel_event', ''), dialog_act('cancel_event', agenda.content)
+
+        if agenda.function == 'cancel_event':
+            if act.content == 'accept':
+                dialog_state['cancel_event'] = True
+                return dialog_act('finish_dialog', ''), dialog_act('','')
+            if act.content == 'refuse':
+                return dialog_act('decide_final_time_oneoption', agenda.content), dialog_act('decide_final_time_oneoption', agenda.content)
 
     return dialog_act('', ''), dialog_act('', '')
 

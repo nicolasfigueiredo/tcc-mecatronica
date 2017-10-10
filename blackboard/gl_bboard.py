@@ -63,6 +63,22 @@ def generate_response(act):
     elif act.function == 'schedule_not_needed':
         return "OK! Aproveite seu compromisso."
 
+    elif act.function == 'decide_final_time_oneoption':
+        time = act.content['possible_times'][0]
+        msg = ('Há uma opção de horário com o maior número de participantes: ' + time['date'] + " às " + time['time'] + ". " + 
+                ", ".join(time['participants']) + " confirmaram presença. Você gostaria de marcar o evento nesse horário?")
+        return msg
+
+    elif act.function == 'decide_final_time_multoptions':
+        times = act.content['possible_times']
+        msg = 'Há algumas opções de horário com o mesmo número máximo de participantes: \n'
+        for time in times:
+            msg += "Às " + time['time'] + " do dia " + time['date'] + ", ".join(time['participants']) + " podem estar presentes.\n"
+        msg += "Você pode falar o horário escolhido ou cancelar o evento."
+        return msg
+
+    elif act.function == 'cancel_event':
+        return 'Você gostaria de cancelar o evento?'
 
     if not act.function:
         return("Não entendi. Vocẽ quer marcar um compromisso?")

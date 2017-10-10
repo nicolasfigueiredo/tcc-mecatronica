@@ -1,0 +1,14 @@
+{
+	"task": "decide_final_time",
+	"event": {
+		"host": "Joao Silva",
+		"type": "almoço",
+		"local": "Quitandinha"
+		},
+	"possible_times": [{
+		"date": "2017-10-10",
+		"time": "16:00:00",
+		"participants": ["Maria Joana", "Felipe Felix"]
+	}
+	]
+}
