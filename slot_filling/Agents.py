@@ -6,8 +6,12 @@ from initialize_db import *
 import requests, json, Levenshtein
 import pandas as pd
 
-nomes_db = initialize_peopleDB()
-print(nomes_db.head())
+nomes_db = 0
+
+def agent_startup(onthology_path, onthology_user_ref):
+    global nomes_db
+    nomes_db = initialize_peopleDB(onthology_path, onthology_user_ref)
+    print(nomes_db.head())
 
 class Agent_Place:
 

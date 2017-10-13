@@ -350,6 +350,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:isDentistOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucas Schor</ontologia-tcc:hasName>
+        <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">9</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
     
 
@@ -365,6 +366,7 @@
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaoneves -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaoneves">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Neves</ontologia-tcc:hasName>
         <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
@@ -374,6 +376,7 @@
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaosilva -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaosilva">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Silva</ontologia-tcc:hasName>
         <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
@@ -386,6 +389,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:isMotherOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Katia Perissini</ontologia-tcc:hasName>
+        <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">18</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
     
 
@@ -396,6 +400,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int">19</ontologia-tcc:hasAge>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Hueb</ontologia-tcc:hasName>
+        <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">13</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
     
 
@@ -403,6 +408,7 @@
     <!-- http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaprado -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaprado">
+        <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Prado</ontologia-tcc:hasName>
         <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
@@ -414,6 +420,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas">
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nicolas Figueiredo</ontologia-tcc:hasName>
+        <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">8</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
     
 
@@ -423,6 +430,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#paulo">
         <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
         <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paulo Birman</ontologia-tcc:hasName>
+        <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10</ontologia-tcc:hasUserID>
     </owl:NamedIndividual>
 </rdf:RDF>
 

@@ -5,6 +5,9 @@ from Agents import *
 dialog_state = {'intent': False, 'type': '', 'participants': [], 'place': '', 'date': '', 'time': '', 'finished': False}
 agenda_act = dialog_act(None, None) # ato dialogal que esperamos receber no momento
 
+def startup(onthology_path, onthology_user_ref):
+    agent_startup(onthology_path, onthology_user_ref)
+
 def get_dialog_state():
     return dialog_state
 
