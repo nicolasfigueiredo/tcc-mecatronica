@@ -4,8 +4,8 @@ sys.path.append("../slot_filling")
 import semantizador
 from dialog_act import *
 from Constants import *
-import gl_bboard
-import gd_bboard
+import blackboard.gl_bboard
+import blackboard.gd_bboard
 import json
 
 def process_notification(json_file):
@@ -28,8 +28,8 @@ def process_notification(json_file):
     data_file = open(json_file)    
     json_data = json.load(data_file)
 
-    act = gd_bboard.startup(json_data)
-    msg = gl_bboard.generate_response(act)
+    act = blackboard.gd_bboard.startup(json_data)
+    msg = blackboard.gl_bboard.generate_response(act)
     print(msg)
 
     while True:
@@ -44,13 +44,13 @@ def process_notification(json_file):
             print("\n\nAto dialogal retornado pelo semantizador:\n")
             dialog_act.print()
 
-            dialog_act = gd_bboard.process_dialog_act(dialog_act)
+            dialog_act = blackboard.gd_bboard.process_dialog_act(dialog_act)
             print("\n\nAto dialogal retornado pelo GD:\n")
             dialog_act.print()
 
             print('\n=================================\n\n\n\n')
                         
-            msg = gl_bboard.generate_response(dialog_act)
+            msg = blackboard.gl_bboard.generate_response(dialog_act)
             print("< " + str(msg))
 
             terminator_acts = ['finish_dialog', 'finish_dialog_alt', 'decline_invite'] # atos que sinalizam o fim do tratamento da notificacao
@@ -59,7 +59,7 @@ def process_notification(json_file):
                 break
 
     data_file.close()
-    return json_data, gd_bboard.get_dialog_state()
+    return json_data, blackboard.gd_bboard.get_dialog_state()
 
 
 # if __name__ == '__main__':

@@ -8,6 +8,7 @@ import uuid
 from rdflib import Graph
 from rdflib import URIRef
 import slot_filling.main
+import blackboard.process_notification
 
 def check_credentials(user, passwd):
     users = {'userA':'', 'userB':'', 'userC':''}
@@ -67,7 +68,22 @@ def generate_initial_notifications(event_json, event_id):
 
     notification_db = notification_db.append(new_notifications)
     notification_db.to_csv('db/notifications.csv')
-    pass
+
+def check_notifications(user_id):
+    notification_db = pd.read_csv('db/notifications.csv')
+    user_notifications = notification_db.query('user_id == @user_id')
+    if len(user_notifications) == 0:
+        return []
+    else:
+        return user_notifications
+
+
+def process_notifications(notifications):
+    notification_ids = notifications['notification_id'].tolist()
+    for id in notification_ids:
+        path = 'db/notifications/' + id + '.json'
+        blackboard.process_notification.process_notification(path)
+
 
 def main():
     user = input('Username:')
@@ -85,7 +101,14 @@ def main():
     onthology_path = 'onthologies/' + str(int(user_record['user_id'])) + '.owl' 
     onthology_user_ref = str(user_record['name_on_onthology'])
 
-    ans = input("Quer marcar um compromisso? (s/n) ")
+    notifications = check_notifications(int(user_record['user_id']))
+    if len(notifications) > 0:
+        ans = input('Você possui novas notificações, gostaria de visualizá-las agora? (s/n)')
+        if ans == 's':
+            process_notifications(notifications)
+
+
+    ans = input("Você não possui notificações novas. Quer marcar um compromisso? (s/n) ")
 
     if ans == 's':
       print('\nOK!\n')
