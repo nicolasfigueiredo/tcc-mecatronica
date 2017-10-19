@@ -17,11 +17,21 @@
         {
             "date": "2017-10-19",
             "time": "04:00:00",
-            "users_pending": [
+            "users_pending": [],
+            "users_confirmed": [
+                1,
                 3
             ],
-            "users_confirmed": [
+            "users_declined": []
+        },
+        {
+            "date": "2017-10-19",
+            "time": "09:00:00",
+            "users_pending": [
                 1
+            ],
+            "user_confirmed": [
+                3
             ],
             "users_declined": []
         }

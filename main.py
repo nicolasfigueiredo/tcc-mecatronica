@@ -9,6 +9,7 @@ from rdflib import Graph
 from rdflib import URIRef
 import slot_filling.main
 import blackboard.process_notification
+import blackboard.controller
 
 def check_credentials(user, passwd):
     users = {'userA':'', 'userB':'', 'userC':''}
@@ -79,10 +80,23 @@ def check_notifications(user_id):
 
 
 def process_notifications(notifications):
-    notification_ids = notifications['notification_id'].tolist()
-    for id in notification_ids:
+    print(notifications)
+    for i in range(len(notifications)):
+        notification = notifications.iloc[i]
+        id = str(notification['notification_id'])
         path = 'db/notifications/' + id + '.json'
-        blackboard.process_notification.process_notification(path)
+        notif, ans = blackboard.process_notification.process_notification(path)
+
+        event_id = str(notification['event_id'])
+        partial_solution_path = 'db/events/' + event_id + '.json'
+        partial_solution_file = open(partial_solution_path)
+        partial_solution_json = json.load(partial_solution_file)
+
+        new_event = blackboard.controller.update_solution(partial_solution_json, int(notification['user_id']), notif, ans)
+        print(new_event)
+        with open(partial_solution_path, 'w', encoding='utf8') as outfile:
+            json.dump(new_event, outfile, indent=4, ensure_ascii=False)
+        
 
 
 def main():
@@ -116,7 +130,7 @@ def main():
 
     if not event['cancelled']:
         event_id = str(uuid.uuid4())
-        path = 'db/event_representations/' + event_id + '.json'
+        path = 'db/events/' + event_id + '.json'
         user_id = int(user_record['user_id'])
         event_json = dialog_state_to_JSON(event, user_id, users_db)
         print(event_json)
