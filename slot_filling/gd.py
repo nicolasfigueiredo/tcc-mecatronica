@@ -2,7 +2,7 @@ from dialog_act import *
 from Constants import *
 from Agents import *
 
-dialog_state = {'intent': False, 'type': '', 'participants': [], 'place': '', 'date': '', 'time': '', 'finished': False}
+dialog_state = {'intent': False, 'type': '', 'participants': [], 'place': '', 'date': '', 'time': '', 'finished': False, 'cancelled': False}
 agenda_act = dialog_act(None, None) # ato dialogal que esperamos receber no momento
 
 def startup(onthology_path, onthology_user_ref):

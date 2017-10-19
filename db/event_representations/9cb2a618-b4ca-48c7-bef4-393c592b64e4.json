@@ -1,0 +1,29 @@
+{
+    "event": {
+        "host": {
+            "id": 1,
+            "name": "joao silva"
+        },
+        "participants": [
+            {
+                "id": 3,
+                "name": "joao neves"
+            }
+        ],
+        "type": "restaurante",
+        "local": "em casa"
+    },
+    "possible_times": [
+        {
+            "date": "2017-10-19",
+            "time": "04:00:00",
+            "users_pending": [
+                3
+            ],
+            "users_confirmed": [
+                1
+            ],
+            "users_declined": []
+        }
+    ]
+}

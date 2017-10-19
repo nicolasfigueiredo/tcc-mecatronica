@@ -1,0 +1,13 @@
+{
+    "task": "accept_invite",
+    "event": {
+        "host": "joao silva",
+        "participants": [
+            "joao neves"
+        ],
+        "type": "restaurante",
+        "local": "em casa",
+        "date": "2017-10-19",
+        "time": "04:00:00"
+    }
+}
