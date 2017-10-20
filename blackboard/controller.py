@@ -21,12 +21,13 @@ def update_solution(partial_solution, userID, notification, notification_answer)
             else:
                 partial_solution['possible_times'][0]['users_declined'].append(userID)  
             if notification_answer['propose_alternate_time']:
-                partial_solution['possible_times'].append({'date': notification_answer['alternate_date'],
-                                                            'time': notification_answer['alternate_time'],
-                                                            'users_pending': get_userIDs(partial_solution, userID),
-                                                            'user_confirmed':[userID],
-                                                            'users_declined':[]})
-
+                # partial_solution['possible_times'].append({ 'authorized': 'False',
+                #                                             'date': notification_answer['alternate_date'],
+                #                                             'time': notification_answer['alternate_time'],
+                #                                             'users_pending': get_userIDs(partial_solution, userID),
+                #                                             'user_confirmed':[userID],
+                #                                             'users_declined':[]})
+                pass
         return partial_solution
 
     if notification['task'] == 'check_alternate_time':
@@ -41,11 +42,15 @@ def update_solution(partial_solution, userID, notification, notification_answer)
         return partial_solution
 
     if notification['task'] == 'authorize_alternate_time':
-        if notification_answer['authorize_alternate_time'] is True:
+        if notification_answer['authorize_alternate_time']:
+            if notification_answer['present_alt_time']:
+                users_confirmed = [userID, notification['alternate_time']['proposed_by']]
+            else:
+                users_confirmed = [notification['alternate_time']['proposed_by']]
             partial_solution['possible_times'].append({'date': notification['alternate_time']['date'],
                                                             'time': notification['alternate_time']['time'],
-                                                            'users_pending': get_userIDs(partial_solution, userID),
-                                                            'user_confirmed':[userID],
+                                                            'users_pending': get_userIDs(partial_solution, users_confirmed),
+                                                            'users_confirmed': users_confirmed,
                                                             'users_declined':[]})
 
 
@@ -55,11 +60,15 @@ def update_solution(partial_solution, userID, notification, notification_answer)
 
 def get_userIDs(partial_solution, userID):
     # Retorna as user IDs participantes do evento, retirando a user ID
+    if type(userID) is not list:
+        userID = [userID]
+
     IDs = []
 
-    IDs.append(partial_solution['event']['host']['id'])
+    if partial_solution['event']['host']['id'] not in userID:
+        IDs.append(partial_solution['event']['host']['id'])
     for participant in partial_solution['event']['participants']:
-        if participant['id'] != userID:
+        if participant['id'] not in userID:
             IDs.append(participant['id'])
 
     return IDs
@@ -78,6 +87,7 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             
             # Se proposto um novo horário, criar notificação pro HOST para autorizar a negociação desse horário
 
+
             new_notification = {}
             new_notification_id = str(uuid.uuid4())
             host_id = event_json['event']['host']['id']
@@ -87,6 +97,7 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             event['participants'] = [participant['name'] for participant in event['participants']]
             new_notification['original_time'] = event_json['possible_times'][0]
             new_notification['alternate_time'] = {}
+            new_notification['alternate_time']['proposed_by'] = user_id
             new_notification['alternate_time']['date'] = notification_answer['alternate_date']
             new_notification['alternate_time']['time'] = notification_answer['alternate_time']
             new_notification['event'] = event
@@ -97,7 +108,39 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
 
+    if notification['task'] == 'authorize_alternate_time':
+        if notification_answer['authorize_alternate_time']:
+            # pegar IDs de quem ainda nao respondeu pelo horário: todos menos o host e o proponente do horário
+            ids = [notification['alternate_time']['proposed_by']]
+            if notification_answer['present_alt_time']:
+                ids.append(user_id)
+
+            # criar JSON check_alt_time:
+            new_notification = {}
+            new_notification_id = str(uuid.uuid4())
+
+            event = copy.deepcopy(event_json['event'])
+            event['host'] = event['host']['name']
+            event['participants'] = [participant['name'] for participant in event['participants']]
+            new_notification['original_time'] = event_json['possible_times'][0]
+            new_notification['alternate_time'] = {}
+            new_notification['alternate_time']['date'] = notification['alternate_time']['date']
+            new_notification['alternate_time']['time'] = notification['alternate_time']['time']
+            new_notification['event'] = event
+            new_notification['task'] = 'check_alternate_time'
             
+            notif_ids = get_userIDs(event_json,ids)
+            for id in notif_ids:
+                new_notifications.append([id, event_id, new_notification_id])
+
+            path = 'db/notifications/' + new_notification_id + '.json'
+            with open(path, 'w', encoding='utf8') as outfile:
+                json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
+            
+
+
+
 
     #no fim dessa função, passar lista de tuplas p função que atualiza o csv
     return(insert_notifications(new_notifications))
@@ -114,7 +157,7 @@ def insert_notifications(new_notifications):
     
     print(new_notifications)
     print(new_not_db)
-    notification_db = notification_db.append(new_not_db)
+    notification_db = notification_db.append(new_not_db, ignore_index=True)
     notification_db.to_csv('db/notifications.csv')
 
 
