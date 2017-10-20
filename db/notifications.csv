@@ -1,2 +1,5 @@
-,user_id,event_id,notification_id
-0,3,9cb2a618-b4ca-48c7-bef4-393c592b64e4,e944f369-9ddf-4593-9ab3-6fd09ffa71d1
+,Unnamed: 0,Unnamed: 0.1,user_id,event_id,notification_id
+0,0.0,0.0,2,91fe9cc6-6db0-4bf2-a240-ae09e1219dc3,ccc81e54-b7b0-47ff-af6a-82be6184b2b7
+1,1.0,1.0,3,91fe9cc6-6db0-4bf2-a240-ae09e1219dc3,ccc81e54-b7b0-47ff-af6a-82be6184b2b7
+2,0.0,,1,91fe9cc6-6db0-4bf2-a240-ae09e1219dc3,138833df-f2b4-485a-9a01-303883485042
+0,,,1,91fe9cc6-6db0-4bf2-a240-ae09e1219dc3,fb12b170-3380-468d-991e-18b925b7aa9c

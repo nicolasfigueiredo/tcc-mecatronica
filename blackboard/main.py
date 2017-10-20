@@ -8,7 +8,7 @@ from Constants import *
 import gl_bboard
 import gd_bboard
 from process_notification import process_notification
-import controller.controller
+import controller
 
 def main():
 
@@ -59,7 +59,7 @@ def main():
     notification = 'json_examples/notifications/define_final_time.json'
     notification, notification_answer = process_notification(notification)
 
-    ans = controller.controller.update_solution(partial_solution_json, userID, notification, notification_answer)
+    ans = controller.update_solution(partial_solution_json, userID, notification, notification_answer)
     print(ans)
 
 

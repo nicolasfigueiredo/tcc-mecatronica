@@ -39,6 +39,14 @@ def startup(json_data):
         agenda_act = dialog_act('schedule_event', event)
         return agenda_act
 
+    if json_data['task'] == 'authorize_alternate_time':
+        dialog_state['authorize_alternate_time'] = None
+        dialog_state['present_alt_time'] = None
+        agenda_act = dialog_act('authorize_alternate_time', json_data)
+        return agenda_act
+
+
+
     if json_data['task'] == 'decide_final_time':
         # dialog_state['task'] = 'check_alternate_time'
         dialog_state['cancel_event'] = None
@@ -86,9 +94,7 @@ def process_error(act, agenda, dialog_state):
     #   2 - Confirma se o que recebeu é a informação que estava esperando (ex: a palavra não entendida é o nome do restaurante)
     #
  
-    new_act = dialog_act('handle_error', None)
-    agenda = dialog_act(None, None)
-    return new_act, agenda
+    return act, agenda
 
 def process_content(act, agenda, dialog_state, event):
     
@@ -99,8 +105,10 @@ def process_content(act, agenda, dialog_state, event):
     if type(act.function) == list:
         for function, content in zip(act.function, act.content):
             if function == 'inform_date':
+                dialog_state['propose_alternate_time'] = True
                 dialog_state['alternate_date'] = content
             if function == 'inform_time':
+                dialog_state['propose_alternate_time'] = True
                 dialog_state['alternate_time'] = content
             
         new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
@@ -163,6 +171,23 @@ def process_content(act, agenda, dialog_state, event):
                 return dialog_act('finish_dialog', ''), dialog_act('','')
             if act.content == 'refuse':
                 return dialog_act('decide_final_time_oneoption', agenda.content), dialog_act('decide_final_time_oneoption', agenda.content)
+
+        if agenda.function == 'authorize_alternate_time':
+            if act.content == 'accept':
+                dialog_state['authorize_alternate_time'] = True
+                return dialog_act('present_alt_time', ''), dialog_act('present_alt_time', '')
+            else:
+                dialog_state['authorize_alternate_time'] = False
+                return dialog_act('finish_nonauthorized', ''), dialog_act('finish_nonauthorized', '')
+
+        if agenda.function == 'present_alt_time':
+            if act.content == 'accept':
+                dialog_state['present_alt_time'] = True
+                return dialog_act('finish_dialog_alt', ''), dialog_act('finish_dialog_alt', '')
+            else:
+                dialog_state['present_alt_time'] = False
+                return dialog_act('finish_dialog_alt', ''), dialog_act('finish_dialog_alt', '')
+
 
     return dialog_act('', ''), dialog_act('', '')
 

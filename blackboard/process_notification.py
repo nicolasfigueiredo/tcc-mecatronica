@@ -53,7 +53,7 @@ def process_notification(json_file):
             msg = blackboard.gl_bboard.generate_response(dialog_act)
             print("< " + str(msg))
 
-            terminator_acts = ['finish_dialog', 'finish_dialog_alt', 'decline_invite'] # atos que sinalizam o fim do tratamento da notificacao
+            terminator_acts = ['finish_dialog', 'finish_dialog_alt', 'decline_invite', 'finish_nonauthorized'] # atos que sinalizam o fim do tratamento da notificacao
 
             if dialog_act.function in terminator_acts:
                 break

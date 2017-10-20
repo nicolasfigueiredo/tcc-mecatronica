@@ -44,12 +44,28 @@ def generate_response(act):
         alt_time = act.content['alternate_time']
         orig_time = act.content['original_time']
         if alt_time['date'] == orig_time['date']:
-            msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + orig_time['date'] 
+            msg = ("Alguém propôs fazer o " + act.content['event']['type'] + " do dia " + orig_time['date'] 
                     + " das " + orig_time['time'] + " para as " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
         else:
             msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + orig_time['date'] +
                     "para o dia " + alt_time['date'] + " às " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
         return msg
+
+    elif act.function == "authorize_alternate_time":
+        alt_time = act.content['alternate_time']
+        orig_time = act.content['original_time']
+        msg = ('Foi proposto um novo horário para o ' + act.content['event']['type'] + ' do dia ' + orig_time['date']
+                + ': ' + alt_time['time'] + ' do dia ' + alt_time['date'] + '. Você quer adicionar esse horário à negociação com os outros'
+                + ' participantes?')
+        return msg
+
+    elif act.function == 'finish_nonauthorized':
+        return 'Ok, esse horário não será inserido na negociação.'
+
+    elif act.function == 'present_alt_time':
+        return 'E você pode comparecer nesse novo horário?'
+
+
 
     elif act.function == 'schedule_event':
         event = act.content
