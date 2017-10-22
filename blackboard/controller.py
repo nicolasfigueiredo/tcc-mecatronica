@@ -53,9 +53,6 @@ def update_solution(partial_solution, userID, notification, notification_answer)
                                                             'users_confirmed': users_confirmed,
                                                             'users_declined':[]})
 
-
-
-
     return partial_solution
 
 def get_userIDs(partial_solution, userID):
@@ -86,8 +83,6 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
         elif notification_answer['propose_alternate_time']:
             
             # Se proposto um novo horário, criar notificação pro HOST para autorizar a negociação desse horário
-
-
             new_notification = {}
             new_notification_id = str(uuid.uuid4())
             host_id = event_json['event']['host']['id']
@@ -137,11 +132,6 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
 
-            
-
-
-
-
     #no fim dessa função, passar lista de tuplas p função que atualiza o csv
     return(insert_notifications(new_notifications))
 
@@ -153,17 +143,16 @@ def insert_notifications(new_notifications):
     new_not_db = []
 
     for notification in new_notifications:
-        new_not_db.append({'user_id': notification[0], 'event_id': notification[1], 'notification_id': notification[2]})
+        new_not_db.append({'user_id': notification[0], 'event_id': notification[1], 'notification_id': notification[2], 'read': False})
     
     print(new_notifications)
     print(new_not_db)
     notification_db = notification_db.append(new_not_db, ignore_index=True)
-    notification_db.to_csv('db/notifications.csv')
+    notification_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
 
 
 def eval_solution(partial_solution):
     for possible_time in partial_solution['possible_times']:
         if possible_time['users_pending']:
             return False
-
     return True

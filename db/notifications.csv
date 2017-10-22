@@ -1,6 +1,3 @@
-,Unnamed: 0,Unnamed: 0.1,user_id,event_id,notification_id
-0,0.0,0.0,2,f30ddb0a-f57f-4fed-b712-972f3734a07e,4647a6d8-92ad-4736-a700-5a08d4615bdd
-1,1.0,1.0,3,f30ddb0a-f57f-4fed-b712-972f3734a07e,4647a6d8-92ad-4736-a700-5a08d4615bdd
-2,2.0,2.0,1,f30ddb0a-f57f-4fed-b712-972f3734a07e,55bedb59-bd10-4623-b281-2b04218f0bdf
-3,3.0,,3,f30ddb0a-f57f-4fed-b712-972f3734a07e,3f8616fc-9081-4428-9240-422d004d6992
-4,,,3,f30ddb0a-f57f-4fed-b712-972f3734a07e,25823b3c-bd7f-4d06-9464-aca30ee248aa
+,user_id,event_id,notification_id,read
+1,2,d28cd016-95a9-4bbd-ba88-966595bcbcfe,93442099-8ef6-4109-8ba0-6927d85ea194,True
+0,3,d28cd016-95a9-4bbd-ba88-966595bcbcfe,93442099-8ef6-4109-8ba0-6927d85ea194,True

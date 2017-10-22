@@ -65,14 +65,14 @@ def generate_initial_notifications(event_json, event_id):
     new_notifications = []
 
     for id in user_ids:
-        new_notifications.append({'user_id': id, 'event_id': event_id, 'notification_id': notification_id})
+        new_notifications.append({'user_id': id, 'event_id': event_id, 'notification_id': notification_id, 'read': False})
 
     notification_db = notification_db.append(new_notifications)
-    notification_db.to_csv('db/notifications.csv')
+    notification_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
 
 def check_notifications(user_id):
     notification_db = pd.read_csv('db/notifications.csv')
-    user_notifications = notification_db.query('user_id == @user_id')
+    user_notifications = notification_db.query('user_id == @user_id & read == False')
     if len(user_notifications) == 0:
         return []
     else:
@@ -80,7 +80,6 @@ def check_notifications(user_id):
 
 
 def process_notifications(notifications):
-    print(notifications)
     for i in range(len(notifications)):
         notification_db_record = notifications.iloc[i]
         id = str(notification_db_record['notification_id'])
@@ -99,11 +98,13 @@ def process_notifications(notifications):
         with open(partial_solution_path, 'w', encoding='utf8') as outfile:
             json.dump(new_event, outfile, indent=4, ensure_ascii=False)
 
-        #TODO: eliminar notificação após processada
-
-        
-
-
+def delete_notifications(notifications):
+    notifications_db = pd.read_csv('db/notifications.csv')
+    notifications['read'] = True
+    notifications_db = pd.concat([notifications_db, notifications])
+    notifications_db = notifications_db.drop_duplicates(subset=['user_id','notification_id'], keep='last')
+    notifications_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
+  
 def main():
     user = input('Username:')
     passwd = input('Password:')
@@ -125,11 +126,15 @@ def main():
         ans = input('Você possui novas notificações, gostaria de visualizá-las agora? (s/n)')
         if ans == 's':
             process_notifications(notifications)
+            delete_notifications(notifications)
 
 
     ans = input("Você não possui notificações novas. Quer marcar um compromisso? (s/n) ")
 
-    if ans == 's':
+    if ans == 'n':
+        return
+
+    elif ans == 's':
       print('\nOK!\n')
       event = slot_filling.main.main(onthology_path, onthology_user_ref)
 
