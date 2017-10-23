@@ -103,14 +103,25 @@ def process_content(act, agenda, dialog_state, event):
     # uma função que processa determinado tipo de msg
 
     if type(act.function) == list:
-        for function, content in zip(act.function, act.content):
-            if function == 'inform_date':
-                dialog_state['propose_alternate_time'] = True
-                dialog_state['alternate_date'] = content
-            if function == 'inform_time':
-                dialog_state['propose_alternate_time'] = True
-                dialog_state['alternate_time'] = content
-            
+        if 'alternate_date' in dialog_state:
+            for function, content in zip(act.function, act.content):
+                if function == 'inform_date':
+                    dialog_state['propose_alternate_time'] = True
+                    dialog_state['alternate_date'] = content
+                if function == 'inform_time':
+                    dialog_state['propose_alternate_time'] = True
+                    dialog_state['alternate_time'] = content
+        if 'final_date' in dialog_state:
+            for function, content in zip(act.function, act.content):
+                if function == 'inform_date':
+                    dialog_state['final_date'] = content
+                    dialog_state['cancel_event'] = False
+                if function == 'inform_time':
+                    dialog_state['final_time'] = content
+                    dialog_state['cancel_event'] = False
+        
+
+
         new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
         return new_act, agenda
 
@@ -192,15 +203,19 @@ def process_content(act, agenda, dialog_state, event):
     return dialog_act('', ''), dialog_act('', '')
 
 def check_slots_filled(dialog_state):
-    if not dialog_state['alternate_date']:
+    if 'alternate_time' in dialog_state:
+        prefix = 'alternate_'
+    if 'final_time' in dialog_state:
+        prefix = 'final_'
+
+    if not dialog_state[prefix+'date']:
         new_act = dialog_act('ask_date', None)
         agenda = dialog_act('ask_date', None)
         return new_act,agenda
-        
-    elif not dialog_state['alternate_time']:
+            
+    elif not dialog_state[prefix+'time']:
         new_act = dialog_act('ask_time', None)
         agenda = dialog_act('ask_time', None)
         return new_act,agenda
-
     else:
         return dialog_act('finish_dialog_alt', ''), dialog_act('','')

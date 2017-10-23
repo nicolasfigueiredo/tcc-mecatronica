@@ -103,6 +103,18 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
 
+        elif notification_answer['accept_original_time']:
+            if eval_solution(event_json, event_id):
+                new_notification = format_final_decision_JSON(event_json)
+                new_notification_id = str(uuid.uuid4())
+                host_id = event_json['event']['host']['id']
+                new_notifications.append([host_id, event_id, new_notification_id])
+
+                path = 'db/notifications/' + new_notification_id + '.json'
+                with open(path, 'w', encoding='utf8') as outfile:
+                    json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
+
     if notification['task'] == 'authorize_alternate_time':
         if notification_answer['authorize_alternate_time']:
             # pegar IDs de quem ainda nao respondeu pelo horário: todos menos o host e o proponente do horário
@@ -132,8 +144,61 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
 
+    if notification['task'] == 'check_alternate_time':
+        if eval_solution(event_json, event_id):
+            new_notification = format_final_decision_JSON(event_json)
+            new_notification_id = str(uuid.uuid4())
+            host_id = event_json['event']['host']['id']
+            new_notifications.append([host_id, event_id, new_notification_id])
+
+            path = 'db/notifications/' + new_notification_id + '.json'
+            with open(path, 'w', encoding='utf8') as outfile:
+                json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
+
+
+
     #no fim dessa função, passar lista de tuplas p função que atualiza o csv
     return(insert_notifications(new_notifications))
+
+def format_final_decision_JSON(event_json):
+
+    new_notification = {}
+    new_notification['event'] = {}
+    threshold = 0
+    final_times = []
+
+    for time in event_json['possible_times']:
+        if len(time['users_confirmed']) > threshold:
+            final_times = []
+            final_times.append(time)
+            threshold = len(time['users_confirmed'])
+        elif len(time['users_confirmed']) == threshold:
+            final_times.append(time)
+
+    new_notification['task'] = 'decide_final_time'
+    new_notification['event']['host'] = event_json['event']['host']['name']
+    new_notification['event']['type'] = event_json['event']['type']
+    new_notification['event']['local'] = event_json['event']['local']
+    new_notification['possible_times'] = []
+    for final_time in final_times:
+        entry = {}
+        entry['date'] = final_time['date']
+        entry['time'] = final_time['time']
+        entry['participants'] = get_names_from_ids(final_time['users_confirmed'])
+        new_notification['possible_times'].append(entry)
+    
+    return new_notification
+
+
+def get_names_from_ids(ids):
+    users_db = pd.read_csv('db/users.csv')
+    names = []
+    for id in ids:
+        name = str(users_db.query('user_id == @id').iloc[0]['name']).title()
+        names.append(name.title())
+    return names
+
 
 def insert_notifications(new_notifications):
     if not new_notifications:
@@ -151,8 +216,14 @@ def insert_notifications(new_notifications):
     notification_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
 
 
-def eval_solution(partial_solution):
+def eval_solution(partial_solution, event_id):
     for possible_time in partial_solution['possible_times']:
         if possible_time['users_pending']:
             return False
+
+    host_id = partial_solution['event']['host']['id']
+    notifications_db = pd.read_csv('db/notifications.csv')
+    if len(notifications_db.query('user_id == @host_id and event_id == @event_id and read == False')) > 0:
+        return False
+
     return True

@@ -80,6 +80,8 @@ def check_notifications(user_id):
 
 
 def process_notifications(notifications):
+    event_ids = []
+
     for i in range(len(notifications)):
         notification_db_record = notifications.iloc[i]
         id = str(notification_db_record['notification_id'])
@@ -87,16 +89,18 @@ def process_notifications(notifications):
         notif, ans = blackboard.process_notification.process_notification(path)
 
         event_id = str(notification_db_record['event_id'])
+        event_ids.append(event_id)
         partial_solution_path = 'db/events/' + event_id + '.json'
         partial_solution_file = open(partial_solution_path)
         partial_solution_json = json.load(partial_solution_file)
 
-        blackboard.controller.generate_notifications(partial_solution_json, int(notification_db_record['user_id']), event_id, notif, ans)
-
         new_event = blackboard.controller.update_solution(partial_solution_json, int(notification_db_record['user_id']), notif, ans)
+        blackboard.controller.generate_notifications(new_event, int(notification_db_record['user_id']), event_id, notif, ans)
+        
         print(new_event)
         with open(partial_solution_path, 'w', encoding='utf8') as outfile:
             json.dump(new_event, outfile, indent=4, ensure_ascii=False)
+
 
 def delete_notifications(notifications):
     notifications_db = pd.read_csv('db/notifications.csv')
@@ -105,6 +109,12 @@ def delete_notifications(notifications):
     notifications_db = notifications_db.drop_duplicates(subset=['user_id','notification_id'], keep='last')
     notifications_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
   
+# def solution_found(event_id):
+#     partial_solution_path = 'db/events/' + event_id + '.json'
+#     partial_solution_file = open(partial_solution_path)
+#     partial_solution_json = json.load(partial_solution_file)
+#     return(blackboard.controller.eval_solution(event_json))
+
 def main():
     user = input('Username:')
     passwd = input('Password:')
