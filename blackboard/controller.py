@@ -78,8 +78,14 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
 
     if notification['task'] == 'accept_invite':
         if notification_answer['accept_invite'] is False:
-            #TODO: kill other notifications from same event
-            pass
+            # kill other notifications from same event
+            notifications_db = pd.read_csv('db/notifications.csv')
+            notifications_to_delete = notifications_db.query('user_id == @user_id and event_id == @event_id')
+            notifications_to_delete['read'] = True
+            notifications_db = pd.concat([notifications_db, notifications_to_delete])
+            notifications_db = notifications_db.drop_duplicates(subset=['user_id','notification_id'], keep='last')
+            notifications_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
+
         elif notification_answer['propose_alternate_time']:
             
             # Se proposto um novo horário, criar notificação pro HOST para autorizar a negociação desse horário
@@ -144,6 +150,18 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
 
+        if notification_answer['present_alt_time']:
+            if partial_eval_solution(event_json, event_id):
+                new_notification = format_final_decision_JSON(event_json)
+                new_notification_id = str(uuid.uuid4())
+                host_id = event_json['event']['host']['id']
+                new_notifications.append([host_id, event_id, new_notification_id])
+
+                path = 'db/notifications/' + new_notification_id + '.json'
+                with open(path, 'w', encoding='utf8') as outfile:
+                    json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
+
     if notification['task'] == 'check_alternate_time':
         if eval_solution(event_json, event_id):
             new_notification = format_final_decision_JSON(event_json)
@@ -154,6 +172,31 @@ def generate_notifications(event_json, user_id, event_id, notification, notifica
             path = 'db/notifications/' + new_notification_id + '.json'
             with open(path, 'w', encoding='utf8') as outfile:
                 json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
+    if notification['task'] == 'decide_final_time':
+        new_notification = {}
+        new_notification['event'] = {}
+        new_notification['task'] = 'schedule_event'
+        new_notification['event']['host']  = event_json['event']['host']['name']
+        new_notification['event']['type']  = event_json['event']['type']
+        new_notification['event']['local'] = event_json['event']['local']
+        for possible_time in event_json['possible_times']:
+            if possible_time['time'] == notification_answer['final_time'] and possible_time['date'] == notification_answer['final_date']:
+                names = get_names_from_ids(possible_time['users_confirmed'])
+        new_notification['event']['participants'] = names
+        new_notification['event']['date'] = notification_answer['final_date']
+        new_notification['event']['time'] = notification_answer['final_time']
+
+        notif_ids = get_ids_from_names(names)
+        new_notification_id = str(uuid.uuid4())
+
+        for id in notif_ids:
+            new_notifications.append([id, event_id, new_notification_id])
+
+            path = 'db/notifications/' + new_notification_id + '.json'
+            with open(path, 'w', encoding='utf8') as outfile:
+                json.dump(new_notification, outfile, indent=4, ensure_ascii=False)
+
 
 
 
@@ -196,8 +239,18 @@ def get_names_from_ids(ids):
     names = []
     for id in ids:
         name = str(users_db.query('user_id == @id').iloc[0]['name']).title()
-        names.append(name.title())
+        names.append(name)
     return names
+
+def get_ids_from_names(names):
+    users_db = pd.read_csv('db/users.csv')
+    ids = []
+    for name in names:
+        name = name.lower()
+        user_id = int(users_db.query('name == @name').iloc[0]['user_id'])
+        ids.append(user_id)
+    return ids
+
 
 
 def insert_notifications(new_notifications):
@@ -226,4 +279,10 @@ def eval_solution(partial_solution, event_id):
     if len(notifications_db.query('user_id == @host_id and event_id == @event_id and read == False')) > 0:
         return False
 
+    return True
+
+def partial_eval_solution(partial_solution, event_id):
+    for possible_time in partial_solution['possible_times']:
+        if possible_time['users_pending']:
+            return False
     return True

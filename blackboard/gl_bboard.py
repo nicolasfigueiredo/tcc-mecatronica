@@ -89,7 +89,7 @@ def generate_response(act):
         times = act.content['possible_times']
         msg = 'Há algumas opções de horário com o mesmo número máximo de participantes: \n'
         for time in times:
-            msg += "Às " + time['time'] + " do dia " + time['date'] + ", ".join(time['participants']) + " podem estar presentes.\n"
+            msg += "\nÀs " + time['time'] + " do dia " + time['date'] + ', ' +", ".join(time['participants']) + " podem estar presentes.\n"
         msg += "Você pode falar o horário escolhido ou cancelar o evento."
         return msg
 

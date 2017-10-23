@@ -36,7 +36,7 @@ def dialog_state_to_JSON(dialog_state, host_id, users_db):
             participants_invited.append({"id": int(id), "name": participant})
             ids.append(int(id))
 
-    host_name = str(users_db.query('user_id == @host_id')['name'][0])
+    host_name = str(users_db.query('user_id == @host_id').iloc[0]['name'])
     host = {"id": host_id, "name": host_name}
     event = {'host': host, "participants": participants_invited, 'type': dialog_state['type'], 'local': dialog_state['place']}
     possible_times = [{'date': dialog_state['date'], 'time': dialog_state['time'],'users_pending': ids, 'users_confirmed': [host_id], 'users_declined': []}]
@@ -132,12 +132,12 @@ def main():
     onthology_user_ref = str(user_record['name_on_onthology'])
 
     notifications = check_notifications(int(user_record['user_id']))
-    if len(notifications) > 0:
+    while len(notifications) > 0:
         ans = input('Você possui novas notificações, gostaria de visualizá-las agora? (s/n)')
         if ans == 's':
             process_notifications(notifications)
             delete_notifications(notifications)
-
+        notifications = check_notifications(int(user_record['user_id']))   
 
     ans = input("Você não possui notificações novas. Quer marcar um compromisso? (s/n) ")
 
