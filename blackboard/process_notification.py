@@ -1,3 +1,4 @@
+import json
 import sys
 sys.path.append("../slot_filling")
 
@@ -6,7 +7,8 @@ from dialog_act import *
 from Constants import *
 import blackboard.gl_bboard
 import blackboard.gd_bboard
-import json
+import asr_tts
+
 
 def process_notification(json_file):
 
@@ -30,12 +32,12 @@ def process_notification(json_file):
 
     act = blackboard.gd_bboard.startup(json_data)
     msg = blackboard.gl_bboard.generate_response(act)
-    print(msg)
+    asr_tts.output(msg)
 
     while True:
 
             print(u"> ", end=u"")
-            user_message = input()
+            user_message = asr_tts.get_input('')
 
             # f.write('u: ' + user_message + '\n')
 
@@ -51,7 +53,7 @@ def process_notification(json_file):
             print('\n=================================\n\n\n\n')
                         
             msg = blackboard.gl_bboard.generate_response(dialog_act)
-            print("< " + str(msg))
+            asr_tts.output(msg)
 
             terminator_acts = ['finish_dialog', 'finish_dialog_alt', 'decline_invite', 'finish_nonauthorized', 'schedule_success', 'schedule_not_needed'] # atos que sinalizam o fim do tratamento da notificacao
 

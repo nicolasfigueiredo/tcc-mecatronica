@@ -263,8 +263,8 @@ def insert_notifications(new_notifications):
     for notification in new_notifications:
         new_not_db.append({'user_id': notification[0], 'event_id': notification[1], 'notification_id': notification[2], 'read': False})
     
-    print(new_notifications)
-    print(new_not_db)
+    # print(new_notifications)
+    # print(new_not_db)
     notification_db = notification_db.append(new_not_db, ignore_index=True)
     notification_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
 

@@ -4,12 +4,14 @@ sys.path.append("./slot_filling")
 import json
 import pandas as pd
 import uuid
+import argparse
 
 from rdflib import Graph
 from rdflib import URIRef
 import slot_filling.main
 import blackboard.process_notification
 import blackboard.controller
+import asr_tts
 
 def check_credentials(user, passwd):
     users = {'userA':'', 'userB':'', 'userC':''}
@@ -20,10 +22,6 @@ def check_credentials(user, passwd):
     return False
 
 def initialize_main_db():
-    # ontologia será user_id.owl, nao precisa guardar na db
-    # users_dict = {'user_id': [1, 2, 3], 'name':['joao silva', 'maria prado', 'joao neves'],
-    #               'username': ['userA', 'userB', 'userC'], 'name_on_onthology': ['joaosilva','mariaprado','joaoneves']}
-    # users_db = pd.DataFrame(users_dict)
     users_db = pd.read_csv('db/users.csv')
     return users_db
 
@@ -97,10 +95,9 @@ def process_notifications(notifications):
         new_event = blackboard.controller.update_solution(partial_solution_json, int(notification_db_record['user_id']), notif, ans)
         blackboard.controller.generate_notifications(new_event, int(notification_db_record['user_id']), event_id, notif, ans)
         
-        print(new_event)
+        # print(new_event)
         with open(partial_solution_path, 'w', encoding='utf8') as outfile:
             json.dump(new_event, outfile, indent=4, ensure_ascii=False)
-
 
 def delete_notifications(notifications):
     notifications_db = pd.read_csv('db/notifications.csv')
@@ -108,12 +105,6 @@ def delete_notifications(notifications):
     notifications_db = pd.concat([notifications_db, notifications])
     notifications_db = notifications_db.drop_duplicates(subset=['user_id','notification_id'], keep='last')
     notifications_db.to_csv('db/notifications.csv', columns=['user_id','event_id','notification_id','read'])
-  
-# def solution_found(event_id):
-#     partial_solution_path = 'db/events/' + event_id + '.json'
-#     partial_solution_file = open(partial_solution_path)
-#     partial_solution_json = json.load(partial_solution_file)
-#     return(blackboard.controller.eval_solution(event_json))
 
 def main():
     user = input('Username:')
@@ -124,42 +115,46 @@ def main():
       return -1
 
     users_db = initialize_main_db()
-    print(users_db.head())
+    # print(users_db.head())
     user_record = users_db.query('username == @user')
-    print(user_record)
+    # print(user_record)
 
     onthology_path = 'onthologies/' + str(int(user_record['user_id'])) + '.owl' 
     onthology_user_ref = str(user_record['name_on_onthology'])
 
     notifications = check_notifications(int(user_record['user_id']))
     while len(notifications) > 0:
-        ans = input('Você possui novas notificações, gostaria de visualizá-las agora? (s/n)')
-        if ans == 's':
+        ans = asr_tts.get_input('Você possui novas notificações, gostaria de visualizá-las agora? (sim/não)')
+        if 'sim' in ans.lower():
             process_notifications(notifications)
             delete_notifications(notifications)
         notifications = check_notifications(int(user_record['user_id']))   
 
-    ans = input("Você não possui notificações novas. Quer marcar um compromisso? (s/n) ")
+    ans = asr_tts.get_input("Você não possui notificações novas. Quer marcar um compromisso? (sim/não) ")
 
-    if ans == 'n':
+    if 'não' in ans.lower():
+        print('\nSaindo...')
         return
 
-    elif ans == 's':
+    elif 'sim' in ans.lower():
       print('\nOK!\n')
       event = slot_filling.main.main(onthology_path, onthology_user_ref)
+
+    else:
+        print('\nComando não reconhecido. Saindo...')
+        return
 
     if not event['cancelled']:
         event_id = str(uuid.uuid4())
         path = 'db/events/' + event_id + '.json'
         user_id = int(user_record['user_id'])
         event_json = dialog_state_to_JSON(event, user_id, users_db)
-        print(event_json)
+        # print(event_json)
         with open(path, 'w', encoding='utf8') as outfile:
             json.dump(event_json, outfile, indent=4, ensure_ascii=False)
-
         generate_initial_notifications(event_json, event_id)
-
-
             
 if __name__ == '__main__':
+    input_mode = input('text or voice? (t/v) ')
+    asr_tts.setup(input_mode)
     main()

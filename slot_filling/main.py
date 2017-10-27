@@ -7,6 +7,7 @@ import apiai, json
 from Constants import *
 import gd
 import gl
+import asr_tts
 
 def main(onthology_path, onthology_user_ref):
 
@@ -30,7 +31,7 @@ def main(onthology_path, onthology_user_ref):
 		while True:
 
 		    print(u"> ", end=u"")
-		    user_message = input()
+		    user_message = asr_tts.get_input('')
 
 		    # f.write('u: ' + user_message + '\n')
 
@@ -49,7 +50,7 @@ def main(onthology_path, onthology_user_ref):
 		    	break
 		    
 		    msg = gl.generate_response(dialog_act, gd.get_dialog_state())
-		    print("< " + str(msg))
+		    asr_tts.output(msg)
 		    # f.write('s: ' + msg + '\n')
 
 		print("\n\n\n\n Diálogo completo.\n\nInicializando blackboard...")

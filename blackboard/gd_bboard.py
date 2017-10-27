@@ -94,7 +94,7 @@ def process_error(act, agenda, dialog_state):
     #   2 - Confirma se o que recebeu é a informação que estava esperando (ex: a palavra não entendida é o nome do restaurante)
     #
  
-    return act, agenda
+    return agenda, agenda
 
 def process_content(act, agenda, dialog_state, event):
     
