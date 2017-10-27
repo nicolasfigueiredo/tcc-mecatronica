@@ -1,4 +1,4 @@
 Constants.py
 catalog*
-access_token.txt
-key_file.json
+speech-test/asr/access_token.txt
+speech-test/asr/key_file.json
