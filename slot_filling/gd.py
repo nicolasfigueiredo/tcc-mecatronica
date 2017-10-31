@@ -180,8 +180,9 @@ def process_content(act, agenda, dialog_state):
     if act.function == 'cancel_event':
         dialog_state['finished'] = True
         dialog_state['cancelled'] = True
-        new_act, agenda = dialog_act('cancel_event', '')
-        return
+        new_act = dialog_act('cancel_event', '')
+        agenda = new_act
+        return new_act, agenda
 
     if act.function in entities_list:
         Agent_Entities.process_msg(act, dialog_state)

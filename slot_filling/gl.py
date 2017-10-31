@@ -41,7 +41,7 @@ def generate_response(act, dialog_state):
         return msg  
 
     elif func == 'confirm_place':
-        msg = 'Achamos o local ' + act.content[0] + 'que fica no endereço ' + act.content[1] + '. Confirma?'
+        msg = 'Achamos o local ' + act.content[0] + ' que fica no endereço ' + act.content[1] + '. Confirma?'
         return msg
 
     elif func == 'confirm_place_error':

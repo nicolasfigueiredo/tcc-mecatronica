@@ -24,6 +24,7 @@ class Agent_Place:
         # do primeiro local obtido com o dado pelo usuário por meio da distância de Leveinshtein, que retorna um índice de 
         # similaridade entre duas strings. 
         
+        nomeDado = act.content
         if type(act.content) is list:
             nomeDado = act.content[0]
 

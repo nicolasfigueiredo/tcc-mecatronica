@@ -59,7 +59,7 @@ def semantize_msg(msg):
     # Quarto: local
     x = max(msg.rfind('no '), msg.rfind(' na '))     # informa local
     if x > -1:      # achamos alguma das expressões e ela começa no índice x
-        new_act.function = dialog_act('inform_place', msg[x+3:])
+        new_act = dialog_act('inform_place', msg[x+3:])
         new_acts.append(new_act)
 
 
@@ -104,7 +104,7 @@ def get_apiai_acts(msg):
     slots = response['result']['parameters']
     
     if 'verbos-compromisso' not in slots:
-        return new_act
+        return None
 
     api_acts = compare_dicts(slots, old_slots)
     old_slots = slots

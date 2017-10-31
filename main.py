@@ -43,6 +43,8 @@ def dialog_state_to_JSON(dialog_state, host_id, users_db):
 
 def prepare_invite_json(event_json):
     event = event_json['event']
+    if not event['participants']:
+        return None
     event['host'] = event['host']['name']
     event['participants'] = [participant['name'] for participant in event['participants']]
     event['date'] = event_json['possible_times'][0]['date']
@@ -52,6 +54,8 @@ def prepare_invite_json(event_json):
 
 def generate_initial_notifications(event_json, event_id):
     notification_json = prepare_invite_json(event_json)
+    if not notification_json:  # se não há notificações a serem geradas, não gerar
+        return
     notification_id = str(uuid.uuid4())
     notification_path = 'db/notifications/' + notification_id + '.json'
     
