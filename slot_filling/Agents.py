@@ -24,7 +24,9 @@ class Agent_Place:
         # do primeiro local obtido com o dado pelo usuário por meio da distância de Leveinshtein, que retorna um índice de 
         # similaridade entre duas strings. 
         
-        nomeDado = act.content
+        if type(act.content) is list:
+            nomeDado = act.content[0]
+
 
         # Formatando a URL para o request à Places API
         base_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
@@ -110,7 +112,10 @@ class Agent_Participants:
 
     def process_msg_relationship(act, dialog_state):
 
-        relationship = translate_relationship(act.content)
+        content = act.content
+        if type(content) is list:
+            content = content[0]
+        relationship = translate_relationship(content)
 
         if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1: # se há alguém com esse tipo de relacionamento na DB
             new_act = dialog_act('confirm_full_name', nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo'].iloc[0])
@@ -202,8 +207,13 @@ class Agent_Participants:
                 return new_act, agenda
 
     def resolve_ambiguity(act, agenda, dialog_state):
+        if type(act.content) is list:
+            content = act.content[0]
+        else:
+            content = act.content
+
         nomes_possiveis = agenda.content
-        nomes_dados = [nome for nome in act.content.split(' ') if len(nome)>1]
+        nomes_dados = [nome for nome in content.split(' ') if len(nome)>1]
 
         if len(nomes_dados) == 2:
             nome_dado = ' '.join(nomes_dados)

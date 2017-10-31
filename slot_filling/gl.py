@@ -30,6 +30,9 @@ def generate_response(act, dialog_state):
     elif func == 'ask_all':
         return('O que você gostaria de mudar?')
 
+    elif func == 'cancel_event':
+        return('Agendamento cancelado.')
+
 
     elif func == 'confirm_all':
         msg = ('Então você gostaria de marcar um ' + dialog_state['type'] + ' no ' + dialog_state['place']

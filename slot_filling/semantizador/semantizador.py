@@ -1,6 +1,12 @@
 from dialog_act import *
 from Constants import *
 import apiai, json
+import sys
+
+sys.path.append('./slot_filling/semantizador/')
+
+import semantizador_yorncancel as syorn
+import semantizador_final as sf
 
 # Abre sessão do API.AI
 ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -12,89 +18,98 @@ def semantize_msg(msg):
 
     global old_slots
 
-    new_act = dialog_act(None, msg) # ato dialogal a ser passado em último caso, para tratamento do erro de entendimento
+    new_acts = [] # lista de atos dialogais a ser retornada
+
     msg = msg.lower()  #lowercase
 
     # Primeiro caso tratado: fala é um 'sim' ou 'nao'
+    syorn_function,syorn_content = syorn.yorncancel(msg)
     
-    if 'nao' in msg:        # problema com acento: 'no' é reconhecido como 'não'
-        new_act.function = 'accept_or_refuse'
-        new_act.content = 'refuse'
-        return new_act
+    if syorn_function:
+        new_act = dialog_act(syorn_function, syorn_content)
+        new_acts.append(new_act)
 
-    if 'sim' in msg:
-        new_act.function = 'accept_or_refuse'
-        new_act.content = 'accept'
-        return new_act
+    # Segundo caso: Localiza nomes de pessoas, entidades relacionamento e locais
+    
+    #Locais
+    #Lista interna
+    
+    #Pessoas:
+    #Oque sobrar de sintagmas nominais do cogroo
+    
+    # Relacionamento    
+    # especificação de participantes por relacionamento, ex: "marque com meu irmão, minha mãe" 
+    # Procura por referências a palavras que representem relacionamentos familiares ex: "irmão", "tia", "sobrinho"
+    # Achada a referência, se processa os casos que se referem a um familiar de algum conhecido ou seu próprio e agrupa a entidade corretamente
 
-    if 'cancelar' in msg:
-        new_act.function = 'cancel_event'
-        new_act.content = ''
-        return new_act
+    non_relationship_list,places_list, relationship_list = sf.get_all_entities(msg)
+    
+    if relationship_list:
+        new_act = dialog_act('inform_participants_by_relationship', relationship_list)
+        new_acts.append(new_act)
 
-    # Segundo caso: especificação de participantes por relacionamento, ex: "marque com meu irmão, minha mãe" 
-    # Procura pelas preposições "meu" e "minha", e assume que o resto da frase contém um ou mais tipos de
-    # relacionamento. No ex: ['irmão', 'mãe']
+    if non_relationship_list:
+        new_act = dialog_act('inform_participants', non_relationship_list)
+        new_acts.append(new_act)
 
-    x = max(msg.rfind('meu '), msg.rfind('minha '))
-    if x > -1:      # achamos alguma das expressões e ela começa no índice x
-        new_act.function = 'inform_participants_by_relationship'
-        new_act.content = msg[x:].split(' ')[1]     # 
-        return new_act
-
-
-    # Terceiro: quero marcar com [lista pessoas]
-    if 'com ' in msg:
-        names = []
-        new_act.function = 'inform_participants'
-        content = msg[msg.find('com '):].split(' ')[1:]     # pega lista de palavras depois de 'com '
-        for word in content:    # remove palavras com menos de 3 letras
-            if len(word) >= 3:
-                if word[-1] == ',':
-                    names.append(word[:-1])
-                else:
-                    names.append(word)
-        new_act.content = names
-        return new_act
+    # if places_list:
+    #     new_act = dialog_act('inform_place', places_list)
+    #     new_acts.append(new_act)
 
     # Quarto: local
     x = max(msg.rfind('no '), msg.rfind(' na '))     # informa local
     if x > -1:      # achamos alguma das expressões e ela começa no índice x
-        new_act.function = 'inform_place'
-        new_act.content = msg[x+3:]     # pega resto da msg depois de 'no' ou 'na'
-        return new_act
+        new_act.function = dialog_act('inform_place', msg[x+3:])
+        new_acts.append(new_act)
 
 
-    # Quinto: entidades reconhecíveis pelo API.AI (datas, horários, tipos de compromisso, verbos que
+    # Terceiro: entidades reconhecíveis pelo API.AI (datas, horários, tipos de compromisso, verbos que
     # indicam a intenção de marcar um compromisso)
     # Manda /query com o input do usuário para o API.AI
+   
+    api_acts = get_apiai_acts(msg)
+    
+    if api_acts:
+        new_acts += api_acts               
+
+    if not new_acts:
+        new_act = dialog_act(None, msg)
+        new_acts.append(new_act)
+
+    return new_acts
+
+def get_apiai_acts(msg):
+
+    global old_slots
+
     request = ai.text_request()
     request.session_id = session_id
     request.query = msg
 
     # Pega as entities reconhecidas
     response = json.loads(request.getresponse().read())
-    
+
+
     print("\n\nResposta da API.AI:\n")
     print(response)
-    
+
     if not 'result' in response:
         print('NETWORK ERROR')
         return None
 
     if not 'parameters' in response['result']: # não houve resposta
-        return new_act
+        print('NETWORK ERROR')
+        return None
+
     slots = response['result']['parameters']
+    
     if 'verbos-compromisso' not in slots:
         return new_act
 
-    new_act = compare_dicts(slots, old_slots)  
-    old_slots = slots               
+    api_acts = compare_dicts(slots, old_slots)
+    old_slots = slots
 
-    if not new_act.function:
-        new_act.content = msg
-
-    return new_act
+    return api_acts
 
 
 def compare_dicts(new, old):
@@ -111,8 +126,8 @@ def compare_dicts(new, old):
             if new[slot]:
                 entities_recognized[slot] = new[slot]
 
-    elif 'verbos-compromisso' not in new:
-        return dialog_act(None, None)
+    # elif 'verbos-compromisso' not in new:
+    #     return None
 
     else:
         for slot in slots:
@@ -132,22 +147,23 @@ def generate_act(entities_recognized):
     # lista de conteúdos, cada par representando uma entidade reconhecida
     # a ser guardada pelo GD
 
-    act = dialog_act([], [])
+    acts = []
 
     if not entities_recognized:
-        return act
+        return None
     else:
-        act.function.append('inform_intent')
-        act.content.append(True)
+        new_act = dialog_act('inform_intent', True)
+        acts.append(new_act)
 
     for entity in entities_recognized:
         if entity == 'tipo-compromisso':
-            act.function.append('inform_type')
+            new_act = dialog_act('inform_type', '')
         if entity == 'date':
-            act.function.append('inform_date')
+            new_act = dialog_act('inform_date', '')
         if entity == 'time':
-            act.function.append('inform_time')
+            new_act = dialog_act('inform_time', '')
         if entity != 'verbos-compromisso':
-            act.content.append(entities_recognized[entity])
+            new_act.content = entities_recognized[entity]
+        acts.append(new_act)
 
-    return act
+    return acts

@@ -101,6 +101,8 @@ def process_error(act, agenda, dialog_state):
 
     elif agenda.function == 'resolve_ambiguity':
         new_act, agenda = Agent_Participants.resolve_ambiguity(act, agenda, dialog_state)
+        if not new_act.function:
+            new_act, agenda = take_next_step()
         return new_act, agenda
 
 
@@ -175,6 +177,12 @@ def process_content(act, agenda, dialog_state):
 
     entities_list = ['inform_intent', 'inform_type', 'inform_date', 'inform_time']
 
+    if act.function == 'cancel_event':
+        dialog_state['finished'] = True
+        dialog_state['cancelled'] = True
+        new_act, agenda = dialog_act('cancel_event', '')
+        return
+
     if act.function in entities_list:
         Agent_Entities.process_msg(act, dialog_state)
         new_act, agenda = take_next_step()
@@ -187,16 +195,28 @@ def process_content(act, agenda, dialog_state):
         return new_act, agenda
     
     if act.function == 'inform_participants':
+        if agenda.function == 'resolve_ambiguity':
+            new_act, agenda = Agent_Participants.resolve_ambiguity(act, agenda, dialog_state)
+            if not new_act.function:
+                new_act, agenda = take_next_step()
+            return new_act, agenda
+
         new_act, agenda = Agent_Participants.process_msg(act, dialog_state)
+        if not new_act.function:
+            new_act, agenda = take_next_step()
         return new_act, agenda
 
     if act.function == 'inform_participants_by_relationship':
         new_act, agenda = Agent_Participants.process_msg_relationship(act, dialog_state)
+        if not new_act.function:
+            new_act, agenda = take_next_step()
         return new_act, agenda
 
     if act.function == 'accept_or_refuse':  # checa agenda para ver qual pergunta foi feita
         if agenda.function == 'confirm_place' or agenda.function == 'confirm_place_notondb':
             new_act, agenda = Agent_Place.process_confirm(act, agenda, dialog_state)
+            if not new_act.function:
+                new_act, agenda = take_next_step()
             return new_act, agenda
 
         elif agenda.function == 'confirm_all':
@@ -205,6 +225,8 @@ def process_content(act, agenda, dialog_state):
 
         elif agenda.function == 'confirm_participants' or agenda.function == 'confirm_full_name' or agenda.function == 'confirm_participants_notondb':
             new_act, agenda = Agent_Participants.process_confirm(act, agenda, dialog_state)
+            if not new_act.function:
+                new_act, agenda = take_next_step()
             return new_act, agenda
 
 

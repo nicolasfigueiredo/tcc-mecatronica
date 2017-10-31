@@ -1,5 +1,6 @@
 import sys
 sys.path.append('./slot_filling')
+sys.path.append('./slot_filling/semantizador')
 
 import semantizador
 from dialog_act import *
