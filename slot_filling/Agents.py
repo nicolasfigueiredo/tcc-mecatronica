@@ -5,6 +5,7 @@ from initialize_db import *
 
 import requests, json, Levenshtein
 import pandas as pd
+import gd
 
 nomes_db = 0
 
@@ -74,7 +75,8 @@ class Agent_Place:
 
             if act.content == 'accept':
                 dialog_state['place'] = agenda.content
-                new_act, agenda = check_slots_filled(dialog_state)
+                new_act = dialog_act('', None)
+                agenda = dialog_act('', None)
                 return new_act, agenda
 
             elif act.content == 'refuse':
@@ -90,19 +92,14 @@ class Agent_Entities:
 
     def process_msg(act, dialog_state):
 
-        for function, content in zip(act.function, act.content):
-            if function == 'inform_intent':
-                dialog_state['intent'] = content
-            if function == 'inform_type':
-                dialog_state['type'] = content
-            if function == 'inform_date':
-                dialog_state['date'] = content
-            if function == 'inform_time':
-                dialog_state['time'] = content
-            
-        new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
-        return new_act, agenda
-
+        if act.function == 'inform_intent':
+            dialog_state['intent'] = act.content
+        if act.function == 'inform_type':
+            dialog_state['type'] = act.content
+        if act.function == 'inform_date':
+            dialog_state['date'] = act.content
+        if act.function == 'inform_time':
+            dialog_state['time'] = act.content
 
 class Agent_Participants:
 
@@ -170,7 +167,8 @@ class Agent_Participants:
         if new_act:
             return new_act, agenda  
     
-        new_act, agenda = check_slots_filled(dialog_state)
+        new_act = dialog_act('', None)
+        agenda = dialog_act('', None)
         return new_act, agenda  
 
     def process_confirm(act, agenda, dialog_state):
@@ -190,13 +188,17 @@ class Agent_Participants:
                 else:
                     dialog_state['participants'].append(agenda.content)
                 new_act, agenda = Agent_Participants.check_lists_participants()
-                if not new_act:
-                    new_act, agenda = check_slots_filled(dialog_state)
+                if new_act:
+                    return new_act, agenda
+                new_act = dialog_act('', None)
+                agenda = dialog_act('', None)
                 return new_act, agenda
             else:
                 new_act, agenda = Agent_Participants.check_lists_participants()
-                if not new_act:
-                    new_act, agenda = check_slots_filled(dialog_state)
+                if new_act:
+                    return new_act, agenda
+                new_act = dialog_act('', None)
+                agenda = dialog_act('', None)
                 return new_act, agenda
 
     def resolve_ambiguity(act, agenda, dialog_state):
@@ -209,8 +211,10 @@ class Agent_Participants:
                 if nome == nome_dado:
                     dialog_state['participants'].append(nome)
                     new_act, agenda = Agent_Participants.check_lists_participants()
-                    if not new_act:
-                        new_act, agenda = check_slots_filled(dialog_state)
+                    if new_act:
+                        return new_act, agenda
+                    new_act = dialog_act('', None)
+                    agenda = dialog_act('', None)
                     return new_act, agenda
         if len(nomes_dados) == 1:
             nome_dado = nomes_dados[0]
@@ -218,8 +222,10 @@ class Agent_Participants:
                 if nome_dado in nome_possivel: # nome dado faz parte de um nome possivel, ou seja, é sobrenome ou primeiro nome
                     dialog_state['participants'].append(nome_possivel)
                     new_act, agenda = Agent_Participants.check_lists_participants()
-                    if not new_act:
-                        new_act, agenda = check_slots_filled(dialog_state)
+                    if new_act:
+                        return new_act, agenda
+                    new_act = dialog_act('', None)
+                    agenda = dialog_act('', None)
                     return new_act, agenda
 
         # else: nome dado não está na DB, checar se isso é ok
@@ -245,37 +251,3 @@ class Agent_Participants:
             return new_act, agenda
 
         return None, None
-
-def check_slots_filled(dialog_state):
-
-        # procura quais slots ainda devem ser preenchidos, e escolhe uma pergunta a ser feita
-
-        if not dialog_state['type']:
-            new_act = dialog_act('ask_type', None)
-            agenda = dialog_act('inform_type', None)
-            return new_act,agenda
-        
-        elif not dialog_state['participants']:
-            new_act = dialog_act('ask_participants', None)
-            agenda = dialog_act('inform_participants', None)
-            return new_act,agenda
-        
-        elif not dialog_state['place']:
-            new_act = dialog_act('ask_place', None)
-            agenda = dialog_act('inform_place', None)
-            return new_act,agenda
-        
-        elif not dialog_state['date']:
-            new_act = dialog_act('ask_date', None)
-            agenda = dialog_act('inform_date', None)
-            return new_act,agenda
-        
-        elif not dialog_state['time']:
-            new_act = dialog_act('ask_time', None)
-            agenda = dialog_act('inform_time', None)
-            return new_act,agenda
-        
-        else:
-            new_act = dialog_act('confirm_all', None)
-            agenda = dialog_act('confirm_all', None)
-            return new_act,agenda
