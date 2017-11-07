@@ -54,7 +54,7 @@ class Agent_Place:
 
             if stringDistance < 0.4:
                 #dialog_state['place'] = nomeAchado
-                new_act = dialog_act('confirm_place', [nomeAchado, enderecoAchado])
+                new_act = dialog_act('confirm_place', [nomeAchado, format_address(enderecoAchado)])
                 agenda = dialog_act('confirm_place', nomeAchado)
                 return new_act, agenda
 
@@ -90,6 +90,9 @@ class Agent_Place:
         else:
             return dialog_act(None, None), dialog_act(None, None)
 
+    def format_address(address):
+        return ','.join(address.split('-')[:2])
+
 
 class Agent_Entities:
 
@@ -104,6 +107,24 @@ class Agent_Entities:
         if act.function == 'inform_time':
             time = act.content.split(':')[0] + ':' + act.content.split(':')[1]
             dialog_state['time'] = time
+
+def get_candidates(names_db, name):
+    candidates = []
+    flag = True
+    names_given = name.split(' ')
+        
+    for i in range(len(names_db)):
+        poss_candidate = names_db.iloc[i]
+        poss_candidate_names = poss_candidate['Nome completo'].split(' ')
+        for partial_name in names_given:
+            if partial_name not in poss_candidate_names:
+                flag = False
+        if flag:
+            candidates.append(poss_candidate)
+
+        flag = True
+
+    return pd.DataFrame(candidates)
 
 class Agent_Participants:
 
@@ -147,26 +168,19 @@ class Agent_Participants:
             act.content = [act.content]
 
         for name in act.content:
-            if len(name.split(' ')) == 1:   # foi informado apenas o primeiro nome ou sobrenome
-                # Correspondencia única
-                if len(nomes_db[nomes_db['Primeiro nome'] == name]) == 1:
-                    Agent_Participants.participantes_a_confirmar.append(nomes_db[nomes_db['Primeiro nome'] == name].iloc[0]['Nome completo'])
-                elif len(nomes_db[nomes_db['Sobrenome'] == name]) == 1:
-                    Agent_Participants.participantes_a_confirmar.append(nomes_db[nomes_db['Sobrenome'] == name].iloc[0]['Nome completo'])
-                # Ambiguidade
-                elif len(nomes_db[nomes_db['Primeiro nome'] == name]) > 1:
-                    Agent_Participants.ambiguidades.append(list(nomes_db[nomes_db['Primeiro nome'] == name]['Nome completo']))
-                elif len(nomes_db[nomes_db['Sobrenome'] == name]) > 1:
-                    Agent_Participants.ambiguidades.append(list(nomes_db[nomes_db['Sobrenome'] == name]['Nome completo']))
-                # Else nome nao está na DB
-                else:
-                    Agent_Participants.participantes_sem_ontologia.append(name)
 
+            candidates = get_candidates(nomes_db, name)
+
+            # Correspondencia única
+            if len(candidates) == 1:
+                Agent_Participants.participantes_a_confirmar.append(candidates.iloc[0]['Nome completo'])
+            # Ambiguidade
+            elif len(candidates) > 1:
+                Agent_Participants.ambiguidades.append(list(candidates['Nome completo']))
+            # Else nome nao está na DB
             else:
-                if len(nomes_db[nomes_db['Nome completo'] == name]) == 1:
-                    Agent_Participants.participantes_confirmados.append(nomes_db[nomes_db['Nome completo'] == name].iloc[0]['Nome completo'])
-                else:
-                    Agent_Participants.participantes_sem_ontologia.append(name)
+                Agent_Participants.participantes_sem_ontologia.append(name)
+
 
 
         new_act, agenda = Agent_Participants.check_lists_participants()
@@ -176,7 +190,7 @@ class Agent_Participants:
     
         new_act = dialog_act('', None)
         agenda = dialog_act('', None)
-        return new_act, agenda  
+        return new_act, agenda
 
     def process_confirm(act, agenda, dialog_state):
         if agenda.function == 'confirm_participants':
