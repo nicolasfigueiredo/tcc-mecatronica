@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ontologia-tcc="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#matheussilva">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Matheus Silva</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrielcosta">
+    <ontologia-tcc:hasName>Gabriel Costa</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#esthercardoso">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Esther Cardoso</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rodrigorocha">
+    <ontologia-tcc:hasName>Rodrigo Rocha</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isHeartDoctorOf">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#manueladias">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Manuela Dias</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabriellpeixoto">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gabriell Peixoto</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#dentista1">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucas Schor</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ontologia-tcc:isDentistOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">9</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restauranteespanhol">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#yasmindacruz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Yasmin da Cruz</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#miguelmonteiro">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Miguel Monteiro</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#vitormoraes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Vitor Moraes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#alicemendes">
+    <ontologia-tcc:hasName>Alice Mendes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lorenavieira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Lorena Vieira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isLocalOf">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#takesPlaceAt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#fernandanascimento">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Fernanda Nascimento</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davicarvalho">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Davi Carvalho</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davidias">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Davi Dias</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrieladacosta">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gabriela da Costa</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#enzocosta">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Enzo Costa</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#melissamartins">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Melissa Martins</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#biancacampos">
+    <ontologia-tcc:hasName>Bianca Campos</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#takesPlaceAt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#analuizafernandes">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Ana Luiza Fernandes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãomiguelmelo">
+    <ontologia-tcc:hasName>João Miguel Melo</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rebecafaria">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Rebeca Faria</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bernardodias">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Bernardo Dias</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#guilhermenascimento">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Guilherme Nascimento</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#almoco">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#refeicao"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#leonardoferreira">
+    <ontologia-tcc:hasName>Leonardo Ferreira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#giovannasantos">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Giovanna Santos</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#comercial">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#domiciliar"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#beatrizlima">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Beatriz Lima</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãovitorbarros">
+    <ontologia-tcc:hasName>João Vitor Barros</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bar_mitzvah_do_nissim">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#evento"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#claramendes">
+    <ontologia-tcc:hasName>Clara Mendes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#vitorramos">
+    <ontologia-tcc:hasName>Vitor Ramos</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#theocaldeira">
+    <ontologia-tcc:hasName>Theo Caldeira</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#claranunes">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Clara Nunes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pietrodarosa">
+    <ontologia-tcc:hasName>Pietro da Rosa</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#larissaoliveira">
+    <ontologia-tcc:hasName>Larissa Oliveira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrielmoura">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Gabriel Moura</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luizacardoso">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Luiza Cardoso</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãopedrofogaça">
+    <ontologia-tcc:hasName>João Pedro Fogaça</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#alíciacarvalho">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Alícia Carvalho</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#eduardodacosta">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Eduardo da Costa</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marianaribeiro">
+    <ontologia-tcc:hasName>Mariana Ribeiro</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#cauãdapaz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Cauã da Paz</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#brunooliveira">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Bruno Oliveira</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#giovannaoliveira">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Giovanna Oliveira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurantefast_food">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anaclarateixeira">
+    <ontologia-tcc:hasName>Ana Clara Teixeira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#juliabarbosa">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Julia Barbosa</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#henriquesilveira">
+    <ontologia-tcc:hasName>Henrique Silveira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#antôniocavalcanti">
+    <ontologia-tcc:hasName>Antônio Cavalcanti</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lauracastro">
+    <ontologia-tcc:hasName>Laura Castro</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#sarahdarosa">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Sarah da Rosa</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#manuelacavalcanti">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Manuela Cavalcanti</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#feliperezende">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Felipe Rezende</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãopedroporto">
+    <ontologia-tcc:hasName>João Pedro Porto</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#agatharibeiro">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Agatha Ribeiro</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrielcavalcanti">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gabriel Cavalcanti</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anajuliadapaz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Ana Julia da Paz</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pedrohenriquedacunha">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Pedro Henrique da Cunha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#otáviosales">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Otávio Sales</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isMotherOf">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#helenaalmeida">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Helena Almeida</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#viniciusgonçalves">
+    <ontologia-tcc:hasName>Vinicius Gonçalves</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#comercial"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#caiofernandes">
+    <ontologia-tcc:hasName>Caio Fernandes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rafaelafogaça">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Rafaela Fogaça</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#fernandaalmeida">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Fernanda Almeida</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#caiodasneves">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Caio das Neves</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#murilonogueira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Murilo Nogueira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolerezende">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Nicole Rezende</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãogabrielnascimento">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>João Gabriel Nascimento</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãomiguelcardoso">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>João Miguel Cardoso</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas">
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nicolas Figueiredo</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">8</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#viniciusrodrigues">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Vinicius Rodrigues</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaoneves">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Neves</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#feliperibeiro">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Felipe Ribeiro</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#benjaminmartins">
+    <ontologia-tcc:hasName>Benjamin Martins</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurantebrasileiro">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luccanunes">
+    <ontologia-tcc:hasName>Lucca Nunes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anabeatrizfreitas">
+    <ontologia-tcc:hasName>Ana Beatriz Freitas</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#matheussouza">
+    <ontologia-tcc:hasName>Matheus Souza</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#samuelpeixoto">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Samuel Peixoto</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lorenzocarvalho">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Lorenzo Carvalho</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rebecaviana">
+    <ontologia-tcc:hasName>Rebeca Viana</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#maria">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">13</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ontologia-tcc:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int">19</ontologia-tcc:hasAge>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Hueb</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isParticipantOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lavíniamoura">
+    <ontologia-tcc:hasName>Lavínia Moura</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#danielribeiro">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Daniel Ribeiro</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasAddress">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pietrodamata">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Pietro da Mata</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pedrobarbosa">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Pedro Barbosa</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#guilhermelima">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Guilherme Lima</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#alíciafernandes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Alícia Fernandes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#carolinamartins">
+    <ontologia-tcc:hasName>Carolina Martins</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#paulo">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paulo Birman</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lucascastro">
+    <ontologia-tcc:hasName>Lucas Castro</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luizgomes">
+    <ontologia-tcc:hasName>Luiz Gomes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#franciscosilva">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Francisco Silva</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#heitorpereira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Heitor Pereira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marinagomes">
+    <ontologia-tcc:hasName>Marina Gomes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#eduardodarocha">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Eduardo da Rocha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marianarocha">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Mariana Rocha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#juliafreitas">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Julia Freitas</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#consulta">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#valentinasouza">
+    <ontologia-tcc:hasName>Valentina Souza</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#enzoalmeida">
+    <ontologia-tcc:hasName>Enzo Almeida</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#heloísaporto">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Heloísa Porto</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#vitóriacavalcanti">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Vitória Cavalcanti</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luizmartins">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Luiz Martins</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#emanuelalmeida">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Emanuel Almeida</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restauranteitaliano">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lucascampos">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Lucas Campos</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaquimviana">
+    <ontologia-tcc:hasName>Joaquim Viana</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rodrigoribeiro">
+    <ontologia-tcc:hasName>Rodrigo Ribeiro</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#theoteixeira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Theo Teixeira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#danielduarte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Daniel Duarte</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pedrohenriquedacruz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Pedro Henrique da Cruz</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luizasilva">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Luiza Silva</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davimendes">
+    <ontologia-tcc:hasName>Davi Mendes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rafaelapeixoto">
+    <ontologia-tcc:hasName>Rafaela Peixoto</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#ianaraújo">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Ian Araújo</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#biancacardoso">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Bianca Cardoso</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaosilva">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joao Silva</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#heloísaribeiro">
+    <ontologia-tcc:hasName>Heloísa Ribeiro</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isabellamoura">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Isabella Moura</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isabellapinto">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Isabella Pinto</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#sophiamonteiro">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Sophia Monteiro</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#ianfernandes">
+    <ontologia-tcc:hasName>Ian Fernandes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#beatrizaraújo">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Beatriz Araújo</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#thiagobarbosa">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Thiago Barbosa</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#amandalima">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Amanda Lima</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariafernandapereira">
+    <ontologia-tcc:hasName>Maria Fernanda Pereira</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolasaraújo">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Nicolas Araújo</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pedropinto">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Pedro Pinto</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joaquimaragão">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Joaquim Aragão</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#miguelalves">
+    <ontologia-tcc:hasName>Miguel Alves</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrielanogueira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Gabriela Nogueira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#cecíliacarvalho">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Cecília Carvalho</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rafaelcosta">
+    <ontologia-tcc:hasName>Rafael Costa</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolesales">
+    <ontologia-tcc:hasName>Nicole Sales</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#samuelsales">
+    <ontologia-tcc:hasName>Samuel Sales</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#enzorodrigues">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Enzo Rodrigues</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isDentistOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#emanuellyaragão">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Emanuelly Aragão</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#benjaminlopes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Benjamin Lopes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#festa">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#laramartins">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Lara Martins</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#cecíliamelo">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Cecília Melo</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bryanjesus">
+    <ontologia-tcc:hasName>Bryan Jesus</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#emanuellyjesus">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Emanuelly Jesus</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#antôniomoura">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Antônio Moura</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#festa_do_joao">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#festa"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#estherpires">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Esther Pires</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anabeatrizbarbosa">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Ana Beatriz Barbosa</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isaacdaconceição">
+    <ontologia-tcc:hasName>Isaac da Conceição</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isadoramoraes">
+    <ontologia-tcc:hasName>Isadora Moraes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bryanpires">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Bryan Pires</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#sophianovaes">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Sophia Novaes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#franciscocardoso">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Francisco Cardoso</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isabellydamata">
+    <ontologia-tcc:hasName>Isabelly da Mata</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãovitorfreitas">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>João Vitor Freitas</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davicastro">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Davi Castro</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#katia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">18</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Katia Perissini</ontologia-tcc:hasName>
+    <ontologia-tcc:isMotherOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolas"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gustavorocha">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Gustavo Rocha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#jantar">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#refeicao"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#yasmindarocha">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Yasmin da Rocha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurantejapones">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#líviapereira">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Lívia Pereira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#enzosouza">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Enzo Souza</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãogabriellima">
+    <ontologia-tcc:hasName>João Gabriel Lima</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#rafaelsantos">
+    <ontologia-tcc:hasName>Rafael Santos</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davinovaes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Davi Novaes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#henriquemoreira">
+    <ontologia-tcc:hasName>Henrique Moreira</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãogomes">
+    <ontologia-tcc:hasName>João Gomes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaclaraferreira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Maria Clara Ferreira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#murilovieira">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Murilo Vieira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#analuizagonçalves">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Ana Luiza Gonçalves</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#agatharezende">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Agatha Rezende</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#laragomes">
+    <ontologia-tcc:hasName>Lara Gomes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#emanuelrodrigues">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Emanuel Rodrigues</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marinalopes">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Marina Lopes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#nicolasfernandes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Nicolas Fernandes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#líviaramos">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Lívia Ramos</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#heitoroliveira">
+    <ontologia-tcc:hasName>Heitor Oliveira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#sarahdamota">
+    <ontologia-tcc:hasName>Sarah da Mota</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isaacdaluz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Isaac da Luz</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabrielsantos">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gabriel Santos</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marialuizacarvalho">
+    <ontologia-tcc:hasName>Maria Luiza Carvalho</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#helenanascimento">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Helena Nascimento</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#arthurfreitas">
+    <ontologia-tcc:hasName>Arthur Freitas</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaclarasilveira">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Maria Clara Silveira</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lorenacaldeira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Lorena Caldeira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#arthurbarros">
+    <ontologia-tcc:hasName>Arthur Barros</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lauracampos">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Laura Campos</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#ida_cinema">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#otáviorezende">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Otávio Rezende</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#comercial"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isabellydacunha">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Isabelly da Cunha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#valentinacosta">
+    <ontologia-tcc:hasName>Valentina Costa</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#luccacarvalho">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Lucca Carvalho</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#melissarodrigues">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Melissa Rodrigues</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaeduardarodrigues">
+    <ontologia-tcc:hasName>Maria Eduarda Rodrigues</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#brunopereira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Bruno Pereira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#isadoraduarte">
+    <ontologia-tcc:hasName>Isadora Duarte</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#marialuizafernandes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Maria Luiza Fernandes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anajuliadaluz">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Ana Julia da Luz</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lavíniapinto">
+    <ontologia-tcc:hasName>Lavínia Pinto</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#letíciadaconceição">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Letícia da Conceição</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#evento">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#anaclaramoreira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Ana Clara Moreira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#amandaaraújo">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Amanda Araújo</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#domiciliar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#alicebarros">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Alice Barros</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariafernandarodrigues">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Maria Fernanda Rodrigues</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#bernardocastro">
+    <ontologia-tcc:hasName>Bernardo Castro</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasLocal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gabriellsales">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gabriell Sales</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#larissasantos">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Larissa Santos</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#carolinarocha">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Carolina Rocha</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#davigomes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Davi Gomes</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#catarinasilva">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Catarina Silva</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#joãomendes">
+    <ontologia-tcc:hasName>João Mendes</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#vitóriadias">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Vitória Dias</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#leonardopereira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Leonardo Pereira</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#thiagopinto">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Thiago Pinto</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#gustavomartins">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Gustavo Martins</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#cauãdamota">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Cauã da Mota</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasUserID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#refeicao">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lucascardoso">
+    <ontologia-tcc:hasName>Lucas Cardoso</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#catarinasouza">
+    <ontologia-tcc:hasName>Catarina Souza</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#local">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurantefrances">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#restaurante"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#letíciadasneves">
+    <ontologia-tcc:hasName>Letícia das Neves</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#cafe">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#refeicao"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasParticipants">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaprado">
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maria Prado</ontologia-tcc:hasName>
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#hasAge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#reuniao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#compromisso"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#lorenzogomes">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+    <ontologia-tcc:hasName>Lorenzo Gomes</ontologia-tcc:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#mariaeduardapereira">
+    <rdf:type rdf:resource="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc#pessoas"/>
+    <ontologia-tcc:hasName>Maria Eduarda Pereira</ontologia-tcc:hasName>
+    <ontologia-tcc:hasUserID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-1</ontologia-tcc:hasUserID>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/nicolas/ontologies/2017/3/ontologia-tcc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+</rdf:RDF>

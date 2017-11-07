@@ -102,7 +102,8 @@ class Agent_Entities:
         if act.function == 'inform_date':
             dialog_state['date'] = act.content
         if act.function == 'inform_time':
-            dialog_state['time'] = act.content
+            time = act.content.split(':')[0] + ':' + act.content.split(':')[1]
+            dialog_state['time'] = time
 
 class Agent_Participants:
 

@@ -14,7 +14,7 @@ import blackboard.controller
 import asr_tts
 
 def check_credentials(user, passwd):
-    users = {'userA':'', 'userB':'', 'userC':''}
+    users = {'userA':'', 'userB':'', 'userC':'', 'userD':''}
     if user not in users:
         return False
     if users[user] == passwd:
@@ -141,7 +141,7 @@ def main():
         return
 
     elif 'sim' in ans.lower():
-      print('\nOK!\n')
+      asr_tts.output('\nOK, pode falar!\n')
       event = slot_filling.main.main(onthology_path, onthology_user_ref)
 
     else:

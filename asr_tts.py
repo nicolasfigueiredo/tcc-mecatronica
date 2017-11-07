@@ -167,6 +167,7 @@ def get_input(prompt):
                 for content in audio_generator)
             responses = client.streaming_recognize(streaming_config, requests)
             utterance = listen_print_loop(responses)
+            print(utterance)
             return(utterance)
       
 def output(msg):
