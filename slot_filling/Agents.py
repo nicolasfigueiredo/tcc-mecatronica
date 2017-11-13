@@ -101,7 +101,7 @@ class Agent_Entities:
         if act.function == 'inform_intent':
             dialog_state['intent'] = act.content
         if act.function == 'inform_type':
-            dialog_state['type'] = act.content
+            dialog_state['type'] = act.content[0]
         if act.function == 'inform_date':
             dialog_state['date'] = act.content
         if act.function == 'inform_time':
@@ -111,7 +111,7 @@ class Agent_Entities:
 def get_candidates(names_db, name):
     candidates = []
     flag = True
-    names_given = name.split(' ')
+    names_given = [x for x in name.split(' ') if len(x) > 1]
         
     for i in range(len(names_db)):
         poss_candidate = names_db.iloc[i]
@@ -224,35 +224,62 @@ class Agent_Participants:
 
     def resolve_ambiguity(act, agenda, dialog_state):
         if type(act.content) is list:
-            content = act.content[0]
+            content = ' '.join(act.content)
         else:
             content = act.content
 
-        nomes_possiveis = agenda.content
-        nomes_dados = [nome for nome in content.split(' ') if len(nome)>1]
+        possible_names = agenda.content
+        given_names = [x for x in content.split(' ') if len(x)>1]
 
-        if len(nomes_dados) == 2:
-            nome_dado = ' '.join(nomes_dados)
-            for nome in nomes_possiveis:
-                if nome == nome_dado:
-                    dialog_state['participants'].append(nome)
-                    new_act, agenda = Agent_Participants.check_lists_participants()
-                    if new_act:
-                        return new_act, agenda
-                    new_act = dialog_act('', None)
-                    agenda = dialog_act('', None)
-                    return new_act, agenda
-        if len(nomes_dados) == 1:
-            nome_dado = nomes_dados[0]
-            for nome_possivel in nomes_possiveis:
-                if nome_dado in nome_possivel: # nome dado faz parte de um nome possivel, ou seja, é sobrenome ou primeiro nome
-                    dialog_state['participants'].append(nome_possivel)
-                    new_act, agenda = Agent_Participants.check_lists_participants()
-                    if new_act:
-                        return new_act, agenda
-                    new_act = dialog_act('', None)
-                    agenda = dialog_act('', None)
-                    return new_act, agenda
+        candidates = []
+        flag = True
+        
+        for poss_name in possible_names:
+            poss_candidate_names = poss_name.split(' ')
+            for partial_name in given_names:
+                if partial_name not in poss_candidate_names:
+                    flag = False
+            if flag:
+                candidates.append(poss_name)
+
+            flag = True
+
+        if len(candidates) == 1:
+            dialog_state['participants'].append(candidates[0])
+            new_act, agenda = Agent_Participants.check_lists_participants()
+            if new_act:
+                return new_act, agenda
+            new_act = dialog_act('', None)
+            agenda = dialog_act('', None)
+            return new_act, agenda
+
+        elif len(candidates) > 1:
+            new_act = dialog_act('resolve_ambiguity', candidates)
+            agenda = dialog_act('resolve_ambiguity', candidates)
+            return new_act, agenda
+
+        # if len(nomes_dados) == 2:
+        #     nome_dado = ' '.join(nomes_dados)
+        #     for nome in nomes_possiveis:
+        #         if nome == nome_dado:
+        #             dialog_state['participants'].append(nome)
+        #             new_act, agenda = Agent_Participants.check_lists_participants()
+        #             if new_act:
+        #                 return new_act, agenda
+        #             new_act = dialog_act('', None)
+        #             agenda = dialog_act('', None)
+        #             return new_act, agenda
+        # if len(nomes_dados) == 1:
+        #     nome_dado = nomes_dados[0]
+        #     for nome_possivel in nomes_possiveis:
+        #         if nome_dado in nome_possivel: # nome dado faz parte de um nome possivel, ou seja, é sobrenome ou primeiro nome
+        #             dialog_state['participants'].append(nome_possivel)
+        #             new_act, agenda = Agent_Participants.check_lists_participants()
+        #             if new_act:
+        #                 return new_act, agenda
+        #             new_act = dialog_act('', None)
+        #             agenda = dialog_act('', None)
+        #             return new_act, agenda
 
         # else: nome dado não está na DB, checar se isso é ok
         new_act = dialog_act('confirm_participants_notondb', nome_dado)

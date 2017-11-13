@@ -4,6 +4,7 @@ Created on Mon Oct 30 09:31:41 2017
 
 @author: erich
 """
+import entity_class as ec
 
 def parse_sentence (sentence):
     cleaned_sentence = sentence.replace(",","")
@@ -73,9 +74,9 @@ def get_relationship_entities (sentence):
     relacoes_on_sentence = get_relationships_on_sentence(parsed_sentence,list_of_relationships)
     relacoes_radars = []
     if relacoes_on_sentence != []:
-        for word in parsed_sentence:
+        for index,word in enumerate(parsed_sentence):
             if word in relacoes_on_sentence:
-                word_index = parsed_sentence.index(word)
+                word_index = index
                 try:
                     pre1_word = parsed_sentence[word_index - 1]
                 except:
@@ -92,9 +93,10 @@ def get_relationship_entities (sentence):
     
     relacoes_entidades = []
     for relacoes_radar in relacoes_radars:
-        if "de" in relacoes_radar or "da" in relacoes_radar:
+        if "de" in relacoes_radar or "da" in relacoes_radar or "do" in relacoes_radar:
             relacoes_entidade = relacoes_radar[1] + " " + relacoes_radar[2] + " " + relacoes_radar[3]
         else:
             relacoes_entidade = relacoes_radar[0] + " " + relacoes_radar[1]
-        relacoes_entidades.append(relacoes_entidade)
+        relacoes_entity = ec.create_entity(relacoes_entidade,sentence)
+        relacoes_entidades.append(relacoes_entity)
     return relacoes_entidades

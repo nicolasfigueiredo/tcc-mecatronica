@@ -8,9 +8,12 @@ from google.cloud.speech import types
 import pyaudio
 from six.moves import queue
 
-from gtts import gTTS
+# from watson_developer_cloud import TextToSpeechV1
+# from slot_filling.Constants import *
+
 import vlc
 import time
+from gtts import gTTS
 
 # Audio recording parameters
 RATE = 16000
@@ -148,6 +151,12 @@ streaming_config = types.StreamingRecognitionConfig(
     config=config,
     single_utterance=True,
     interim_results=False)
+
+# text_to_speech = TextToSpeechV1(
+#     username=WATSON_USERNAME,
+#     password=WATSON_PWORD,
+#     x_watson_learning_opt_out=True)  # Optional flag
+
 
 def setup(mode):
     global input_mode
