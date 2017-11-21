@@ -93,7 +93,7 @@ def generate_response(act, dialog_state):
 
 
 def prepare_date(raw_date):
-    return raw_date.split('-')[2] + 'do' + raw_date.split('-')[1]
+    return raw_date.split('-')[2] + ' do ' + raw_date.split('-')[1]
 
 def prepare_time(raw_time):
-    return raw_time.split(':')[0] + 'horas'
+    return raw_time.split(':')[0] + ' horas'

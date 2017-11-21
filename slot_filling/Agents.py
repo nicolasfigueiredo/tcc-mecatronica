@@ -6,6 +6,8 @@ from initialize_db import *
 import requests, json, Levenshtein
 import pandas as pd
 import gd
+import re
+import datetime
 
 nomes_db = 0
 
@@ -24,6 +26,13 @@ def similar_name(nomeDado, nomeAchado):
         if nome in nomes_dados:
             return True
     return False
+
+def get_numeral(msg):
+    number = re.search(r'\d+', msg)
+    if number:
+        return int(number.group())
+    return None
+
 
 class Agent_Place:
 
@@ -120,6 +129,33 @@ class Agent_Entities:
         if act.function == 'inform_time':
             time = act.content.split(':')[0] + ':' + act.content.split(':')[1]
             dialog_state['time'] = time
+
+    def process_err_date(act, agenda, dialog_state):
+        day = get_numeral(act.content)
+        if not day:
+            new_act = dialog_act('ask_date', 'retry')
+            agenda = dialog_act('inform_date', None)
+            return new_act, agenda
+
+        if datetime.date.today().day < day:
+            dialog_state['date'] = '2017-' + str(datetime.date.today().month) + '-' + str(day)
+        elif datetime.date.today().month == 12:
+            dialog_state['date'] = '2017-01-' + str(day)
+        else:
+            dialog_state['date'] = '2017-' + str(datetime.date.today().month + 1) + '-' + str(day)
+
+        return None, None
+
+
+    def process_err_time(act, agenda, dialog_state):
+        hour = get_numeral(act.content)
+        if not hour:
+            new_act = dialog_act('ask_date', 'retry')
+            agenda = dialog_act('inform_date', None)
+            return new_act, agenda
+        dialog_state['time'] = str(hour) + ':00'
+        return None, None
+
 
 def get_candidates(names_db, name):
     candidates = []

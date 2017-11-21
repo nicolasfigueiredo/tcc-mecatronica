@@ -107,13 +107,19 @@ def process_error(act, agenda, dialog_state):
 
 
     elif agenda.function == 'inform_date':
-        new_act = dialog_act('ask_date', 'retry')
-        agenda = dialog_act('inform_date', None)
+        new_act, agenda = Agent_Entities.process_err_date(act, agenda, dialog_state)
+        if not new_act:
+            new_act, agenda = take_next_step()
+        # new_act = dialog_act('ask_date', 'retry')
+        # agenda = dialog_act('inform_date', None)
         return new_act, agenda        
 
     elif agenda.function == 'inform_time':
-        new_act = dialog_act('ask_time', 'retry')
-        agenda = dialog_act('inform_time', None)
+        new_act, agenda = Agent_Entities.process_err_time(act, agenda, dialog_state)
+        if not new_act:
+            new_act, agenda = take_next_step()
+        # new_act = dialog_act('ask_time', 'retry')
+        # agenda = dialog_act('inform_time', None)
         return new_act, agenda
 
     elif not agenda.function:
