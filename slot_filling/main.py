@@ -9,6 +9,7 @@ from Constants import *
 import gd
 import gl
 import asr_tts
+import uuid
 
 def main(onthology_path, onthology_user_ref):
 
@@ -25,7 +26,10 @@ def main(onthology_path, onthology_user_ref):
 	# 2 - Passa a mensagem ao semantizador, recebendo de volta um ato dialogal
 	# 3 - O ato dialogal é passado ao GD, que responde com outro ato dialogal
 	# 4 - O ato dialogal é passado ao GL, que responde com uma string a ser comunicada ao usuário
-	# with open(file_name, 'w') as f:
+	log_id = str(uuid.uuid4())
+	file_name = 'logs/' + log_id + '.txt'
+
+	with open(file_name, 'w') as f:
 
 		gd.startup(onthology_path, onthology_user_ref)
 
@@ -34,7 +38,7 @@ def main(onthology_path, onthology_user_ref):
 		    print(u"> ", end=u"")
 		    user_message = asr_tts.get_input('')
 
-		    # f.write('u: ' + user_message + '\n')
+		    f.write('u: ' + user_message + '\n')
 
 		    print('\n\n\n\n=================================\n')
 		    dialog_acts = semantizador.semantize_msg(user_message)
@@ -56,7 +60,7 @@ def main(onthology_path, onthology_user_ref):
 		    
 		    msg = gl.generate_response(dialog_act, gd.get_dialog_state())
 		    asr_tts.output(msg)
-		    # f.write('s: ' + msg + '\n')
+		    f.write('s: ' + msg + '\n')
 
 		print("\n\n\n\n Diálogo completo.\n\nInicializando blackboard...")
 		return gd.get_dialog_state()

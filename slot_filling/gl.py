@@ -9,7 +9,7 @@ def generate_response(act, dialog_state):
     msg = ''
 
     if not func:
-        return("Não entendi. Vocẽ quer marcar um compromisso?")
+        return("Não entendi. Você quer marcar um compromisso?")
     
     if func == 'handle_error':
         return("Não entendi, tente dizer mais sobre o seu compromisso")
@@ -36,8 +36,8 @@ def generate_response(act, dialog_state):
 
     elif func == 'confirm_all':
         msg = ('Então você gostaria de marcar um ' + dialog_state['type'] + ' no ' + dialog_state['place']
-                + ' no dia ' + dialog_state['date'] + ' às ' + dialog_state['time'] + ' com ' + ', '.join(dialog_state['participants'])
-                + ' ?')
+                + ' no dia ' + prepare_date(dialog_state['date']) + ' às ' + prepare_time(dialog_state['time']) + ' com ' + ', '.join(dialog_state['participants'])
+                + '?')
         return msg  
 
     elif func == 'confirm_place':
@@ -49,30 +49,35 @@ def generate_response(act, dialog_state):
         return msg
 
     elif func == 'confirm_place_notondb':
-        msg = 'Não achamos o local' + act.content + ' na nossa base de dados. Confirma o local mesmo assim?'
+        msg = 'Não achamos o local ' + act.content + ' na nossa base de dados. Confirma o local mesmo assim?'
         return msg
 
     elif func == 'confirm_participants':
-        msg = 'Não entendi, você quer marcar com ' + ', '.join(act.content) + '?'
+        msg = 'Não entendi, você quer convidar ' + act.content + '?'
         return msg
 
     elif func == 'resolve_ambiguity':
-        msg = 'Conheço algumas pessoas com esse nome: ' + ', '.join(act.content) +' .Qual dessas você quer convidar?'
-        return msg
+        if len(act.content) > 3:
+            prep = act.content[0].split(' ')[0][-1]
+            msg = 'Xi, conheço muitas pessoas com esse nome, como '+ prep+' ' + act.content[0] + ' e '+prep+' '  + act.content[1] +'. Qual o nome completo?'
+            return msg
+        else:
+            msg = 'Você está se referindo à ' + ', ou '.join(act.content) +'?'
+            return msg
 
     elif func == 'confirm_full_name':
         msg = 'Você quer convidar ' + act.content + ' para o evento?'
         return msg
 
     elif func == 'confirm_participants_notondb':
-        if len(act.content) > 1:
+        if type(act.content) is list and len(act.content) > 1:
             msg = 'Não conheço essas pessoas: ' + ', '.join(act.content) +'. Isso quer dizer que não vou conseguir negociar o horário do evento com elas, OK?'
         else:
             msg = 'Não conheço ' + act.content[0] + '. Isso quer dizer que não vou conseguir negociar o horário do evento com essa pessoa, OK?'
         return msg
 
     elif func == 'retry_relationship':
-        msg = 'Desculpe, não conheço ninguém com o tipo de relacinamento ' + act.content + ' com você. Tente especificar a pessoa pelo nome.'
+        msg = 'Desculpe, não conheço ninguém com o tipo de relacionamento ' + act.content + ' com você. Tente especificar a pessoa pelo nome.'
         return msg
 
 
@@ -85,3 +90,10 @@ def generate_response(act, dialog_state):
 
 
     return("Não entendi. Vocẽ quer marcar um compromisso?")
+
+
+def prepare_date(raw_date):
+    return raw_date.split('-')[2] + 'do' + raw_date.split('-')[1]
+
+def prepare_time(raw_time):
+    return raw_time.split(':')[0] + 'horas'

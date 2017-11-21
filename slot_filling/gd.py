@@ -129,6 +129,9 @@ def process_error(act, agenda, dialog_state):
     return new_act, agenda
 
 def take_next_step():
+    # new_act, agenda = Agent_Participants.check_lists_participants()        
+    # if new_act:
+    #     return new_act, agenda
     if not acts_stack:
         new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
         return new_act, agenda

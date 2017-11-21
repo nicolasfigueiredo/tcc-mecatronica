@@ -124,7 +124,7 @@ def main():
     # print(user_record)
 
     onthology_path = 'onthologies/' + str(int(user_record['user_id'])) + '.owl' 
-    onthology_user_ref = str(user_record['name_on_onthology'])
+    onthology_user_ref = str(user_record['name_on_onthology'].iloc[0])
 
     notifications = check_notifications(int(user_record['user_id']))
     while len(notifications) > 0:

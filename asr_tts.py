@@ -8,8 +8,8 @@ from google.cloud.speech import types
 import pyaudio
 from six.moves import queue
 
-# from watson_developer_cloud import TextToSpeechV1
-# from slot_filling.Constants import *
+from watson_developer_cloud import TextToSpeechV1
+from slot_filling.Constants import *
 
 import vlc
 import time
@@ -20,7 +20,6 @@ RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
 
 input_mode = ''
-
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -152,10 +151,10 @@ streaming_config = types.StreamingRecognitionConfig(
     single_utterance=True,
     interim_results=False)
 
-# text_to_speech = TextToSpeechV1(
-#     username=WATSON_USERNAME,
-#     password=WATSON_PWORD,
-#     x_watson_learning_opt_out=True)  # Optional flag
+text_to_speech = TextToSpeechV1(
+    username=WATSON_USERNAME,
+    password=WATSON_PWORD,
+    x_watson_learning_opt_out=True)  # Optional flag
 
 
 def setup(mode):
@@ -183,9 +182,16 @@ def output(msg):
     global input_mode
 
     if input_mode == 'v':
-        tts = gTTS(text=msg, lang='pt')
-        tts.save("tts_out.mp3")
-        p = vlc.MediaPlayer("tts_out.mp3")
+        # tts = gTTS(text=msg, lang='pt')
+        # tts.save("tts_out.mp3")
+
+        with open('output.wav', 'wb') as audio_file:
+            audio_file.write(
+                text_to_speech.synthesize(msg, accept='audio/wav',
+                                      voice="pt-BR_IsabelaVoice"))
+
+
+        p = vlc.MediaPlayer("output.wav")
         p.play()
 
         print(msg)

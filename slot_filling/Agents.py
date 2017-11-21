@@ -12,7 +12,18 @@ nomes_db = 0
 def agent_startup(onthology_path, onthology_user_ref):
     global nomes_db
     nomes_db = initialize_peopleDB(onthology_path, onthology_user_ref)
-    print(nomes_db.head())
+    # print(nomes_db.head())
+
+def similar_name(nomeDado, nomeAchado):
+    nomeDado = nomeDado.lower()
+    nomeAchado = nomeAchado.lower()
+    nomes_dados = nomeDado.split(' ')
+    nomes_achados = nomeAchado.split(' ')
+
+    for nome in nomes_achados:
+        if nome in nomes_dados:
+            return True
+    return False
 
 class Agent_Place:
 
@@ -50,11 +61,13 @@ class Agent_Place:
             enderecoAchado = response['results'][0]['formatted_address']
             
             # Índice de diferença entre duas strings: quanto menor, mais parecidas as duas palavras
-            stringDistance = float(Levenshtein.distance(nomeDado, nomeAchado)) / len(nomeDado)
+            # stringDistance = float(Levenshtein.distance(nomeDado, nomeAchado)) / len(nomeDado)
 
-            if stringDistance < 0.4:
+
+
+            if similar_name(nomeDado, nomeAchado):
                 #dialog_state['place'] = nomeAchado
-                new_act = dialog_act('confirm_place', [nomeAchado, format_address(enderecoAchado)])
+                new_act = dialog_act('confirm_place', [nomeAchado, Agent_Place.format_address(enderecoAchado)])
                 agenda = dialog_act('confirm_place', nomeAchado)
                 return new_act, agenda
 
@@ -132,22 +145,40 @@ class Agent_Participants:
     ambiguidades = []
     participantes_sem_ontologia = []
     participantes_confirmados = []
+    relacionamento_sem_ref = []
 
     def process_msg_relationship(act, dialog_state):
 
-        content = act.content
-        if type(content) is list:
-            content = content[0]
-        relationship = translate_relationship(content)
+        if type(act.content) is not list:
+            act.content = [act.content]
+        
+        for relationship_pre in act.content:
+            relationship = translate_relationship(relationship_pre)
+            
 
-        if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1: # se há alguém com esse tipo de relacionamento na DB
-            new_act = dialog_act('confirm_full_name', nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo'].iloc[0])
-            agenda = new_act
+            print('EEEEEEEEEEE')
+            print(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship])
+            print(nomes_db.loc[nomes_db.loc[:,'Relacao'] == 'isBrotherOf'])
+            print(nomes_db['Relacao'].unique())
+
+
+            if len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) == 1: # se há alguém com esse tipo de relacionamento na DB
+                Agent_Participants.participantes_a_confirmar.append(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo'].iloc[0])
+            elif len(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship]) > 1:
+                Agent_Participants.ambiguidades.append(list(nomes_db.loc[nomes_db.loc[:,'Relacao'] == relationship, 'Nome completo']))
+            else:
+                Agent_Participants.relacionamento_sem_ref.append(relationship)
+
+        print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHH')
+        print(Agent_Participants.relacionamento_sem_ref)
+        new_act, agenda = Agent_Participants.check_lists_participants()
+        new_act.print()        
+        if new_act:
             return new_act, agenda
 
-        # else: nao conhecemos essa relacao
-        new_act = dialog_act('retry_relationship', relationship)
-        agenda = dialog_act('inform_participants', None)
+        new_act = dialog_act('', None)
+        agenda = dialog_act('', None)
+
         return new_act, agenda
  
 
@@ -195,7 +226,7 @@ class Agent_Participants:
     def process_confirm(act, agenda, dialog_state):
         if agenda.function == 'confirm_participants':
             if act.content == 'accept':
-                new_act, agenda = process_msg(act, dialog_state)
+                new_act, agenda = Agent_Participants.process_msg(agenda, dialog_state)
             else:
                 new_act = dialog_act('ask_participants', 'retry')
                 agenda = dialog_act('inform_participants', None)
@@ -229,11 +260,12 @@ class Agent_Participants:
             content = act.content
 
         possible_names = agenda.content
+
         given_names = [x for x in content.split(' ') if len(x)>1]
 
         candidates = []
         flag = True
-        
+
         for poss_name in possible_names:
             poss_candidate_names = poss_name.split(' ')
             for partial_name in given_names:
@@ -241,8 +273,8 @@ class Agent_Participants:
                     flag = False
             if flag:
                 candidates.append(poss_name)
-
             flag = True
+
 
         if len(candidates) == 1:
             dialog_state['participants'].append(candidates[0])
@@ -282,11 +314,16 @@ class Agent_Participants:
         #             return new_act, agenda
 
         # else: nome dado não está na DB, checar se isso é ok
-        new_act = dialog_act('confirm_participants_notondb', nome_dado)
+        new_act = dialog_act('confirm_participants_notondb', act.content)
         agenda = new_act
         return new_act, agenda
 
     def check_lists_participants():
+        if len(Agent_Participants.relacionamento_sem_ref) > 0:
+            relationship = Agent_Participants.relacionamento_sem_ref.pop()
+            new_act = dialog_act('retry_relationship', relationship)
+            agenda = dialog_act('inform_participants', None)
+            return new_act, agenda
         if len(Agent_Participants.ambiguidades) > 0:
             amb = Agent_Participants.ambiguidades.pop()
             new_act = dialog_act('resolve_ambiguity', amb)
