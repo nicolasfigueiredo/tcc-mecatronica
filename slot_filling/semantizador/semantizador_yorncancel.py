@@ -1,7 +1,7 @@
 import re
 
 def yorncancel(message):
-    sim_re = re.compile("[sS][iI][mM]")
+    sim_re = re.compile("[sS][iI][mM]|[tT][u][d][o][ ][b][e][m]|[oO][kK]|[cC][o][n][f][i][r][m][oa]|[pP][o][s][i][t][i][v][o]")
     nao_re = re.compile("[nN][aãAÃ][oO]")
     cancel_re = re.compile("[cC][aA][nN][cC][eE][lL][aA][rR]")
     

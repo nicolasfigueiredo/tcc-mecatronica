@@ -23,7 +23,7 @@ def get_list_of_types():
     #sinonimos de lugares para beber
     lista_types_beber = ["bar","boteco",
                          "breja","litrão",
-                         "beber"]
+                         "beber","role"]
     #sinonimos de lugares para dançar
     lista_types_dancar = ["balada","night",
                           "festa"]
