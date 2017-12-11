@@ -42,13 +42,16 @@ def process_notification(json_file):
             # f.write('u: ' + user_message + '\n')
 
             print('\n\n\n\n=================================\n')
-            dialog_act = semantizador.semantize_msg(user_message)
-            print("\n\nAto dialogal retornado pelo semantizador:\n")
-            dialog_act.print()
+            dialog_acts = semantizador.semantize_msg(user_message)
+            if type(dialog_acts) is not list:
+                dialog_acts = [dialog_acts]
 
-            dialog_act = blackboard.gd_bboard.process_dialog_act(dialog_act)
+            for act in dialog_acts:
+                act.print()
+
+            dialog_act = blackboard.gd_bboard.process_dialog_act(dialog_acts)
             print("\n\nAto dialogal retornado pelo GD:\n")
-            dialog_act.print()
+            # dialog_act.print()
 
             print('\n=================================\n\n\n\n')
                         

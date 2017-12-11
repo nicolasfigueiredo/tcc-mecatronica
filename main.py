@@ -128,13 +128,13 @@ def main():
 
     notifications = check_notifications(int(user_record['user_id']))
     while len(notifications) > 0:
-        ans = asr_tts.get_input('Você possui novas notificações, gostaria de visualizá-las agora? (sim/não)')
+        ans = asr_tts.get_input('Você possui novas notificações, gostaria de visualizá-las agora?')
         if 'sim' in ans.lower():
             process_notifications(notifications)
             delete_notifications(notifications)
         notifications = check_notifications(int(user_record['user_id']))   
 
-    ans = asr_tts.get_input("Você não possui notificações novas. Quer marcar um compromisso? (sim/não) ")
+    ans = asr_tts.get_input("Você não possui notificações novas. Quer marcar um compromisso?")
 
     if 'não' in ans.lower():
         print('\nSaindo...')

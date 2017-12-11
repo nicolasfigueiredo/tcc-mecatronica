@@ -61,7 +61,7 @@ def startup(json_data):
 def get_dialog_state():
     return dialog_state
 
-def process_dialog_act(act):
+def process_dialog_act(acts):
 
     # Função principal.
     global agenda_act, dialog_state, event
@@ -69,14 +69,15 @@ def process_dialog_act(act):
     print("\n\nAgenda:\n")
     agenda_act.print()
 
-    if not act.function:
-        new_act, agenda = process_error(act, agenda_act, dialog_state)
 
+    for act in acts:
+        if not act.function:
+            new_act, agenda = process_error(act, agenda_act, dialog_state)
 
-    # Processa a msg assumindo que seu conteúdo está certo (após a checagem semântica, a ser implementada) 
-    else:
-        new_act, agenda = process_content(act, agenda_act, dialog_state, event)
-    
+            # Processa a msg assumindo que seu conteúdo está certo (após a checagem semântica, a ser implementada) 
+        else:
+            new_act, agenda = process_content(act, agenda_act, dialog_state, event)
+            
     agenda_act = agenda
     print("\n\nEstado do diálogo:\n")
     print(dialog_state)
@@ -102,28 +103,33 @@ def process_content(act, agenda, dialog_state, event):
     # Podemos implementar seguindo o modelo dos agentes: nesse caso, cada agente é
     # uma função que processa determinado tipo de msg
 
-    if type(act.function) == list:
+    function = act.function
+    content = act.content
+    
+    if function == 'inform_date':
         if 'alternate_date' in dialog_state:
-            for function, content in zip(act.function, act.content):
-                if function == 'inform_date':
-                    dialog_state['propose_alternate_time'] = True
-                    dialog_state['alternate_date'] = content
-                if function == 'inform_time':
-                    dialog_state['propose_alternate_time'] = True
-                    dialog_state['alternate_time'] = content
+            dialog_state['propose_alternate_time'] = True
+            dialog_state['alternate_date'] = content
         if 'final_date' in dialog_state:
-            for function, content in zip(act.function, act.content):
-                if function == 'inform_date':
-                    dialog_state['final_date'] = content
-                    dialog_state['cancel_event'] = False
-                if function == 'inform_time':
-                    dialog_state['final_time'] = content
-                    dialog_state['cancel_event'] = False
-        
-
+            dialog_state['final_date'] = content
+            dialog_state['cancel_event'] = False
 
         new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
         return new_act, agenda
+
+
+    elif function == 'inform_time':
+        if 'final_date' in dialog_state:
+            dialog_state['final_time'] = content
+            dialog_state['cancel_event'] = False       
+        if 'alternate_date' in dialog_state:
+            dialog_state['propose_alternate_time'] = True
+            dialog_state['alternate_time'] = content
+            
+        new_act, agenda = check_slots_filled(dialog_state)  # procura quais slots ainda devem ser preenchidos, para fazermos a prox pergunta
+        return new_act, agenda
+
+
 
     elif act.function == 'accept_or_refuse':
 

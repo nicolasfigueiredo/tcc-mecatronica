@@ -10,7 +10,7 @@ def generate_response(act):
     if act.function == 'propose_invite':
         event = act.content
         msg = ("Você foi convidado por " + event['host'] + " para um " + event['type'] + " com " + ", ".join(event['participants']) +
-              " às " + event['time'] + " do dia " + event['date'] + ". Voce aceita esse convite? (aceite se quiser propor outro horário)")
+              " às " + prepare_time(event['time']) + " do dia " + prepare_date(event['date']) + ". Voce aceita esse convite? (aceite se quiser propor outro horário)")
         return msg
 
     elif act.function == 'decline_invite':
@@ -18,7 +18,7 @@ def generate_response(act):
         return msg
 
     elif act.function == 'accept_original_time':
-        msg = "Vocẽ pode comparecer no horário proposto pelo anfitrião?"
+        msg = "Você pode comparecer no horário proposto pelo anfitrião?"
         return msg
 
     elif act.function == 'propose_alternate_time':
@@ -44,18 +44,18 @@ def generate_response(act):
         alt_time = act.content['alternate_time']
         orig_time = act.content['original_time']
         if alt_time['date'] == orig_time['date']:
-            msg = ("Alguém propôs fazer o " + act.content['event']['type'] + " do dia " + orig_time['date'] 
-                    + " das " + orig_time['time'] + " para as " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
+            msg = ("Alguém propôs fazer o " + act.content['event']['type'] + " do dia " + prepare_date(orig_time['date']) 
+                    + " das " + prepare_time(orig_time['time']) + " para as " + prepare_time(alt_time['time']) + ". Você poderia comparecer nesse novo horário?")
         else:
-            msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + orig_time['date'] +
-                    "para o dia " + alt_time['date'] + " às " + alt_time['time'] + ". Você poderia comparecer nesse novo horário?")
+            msg = ("Alguém propôs mudar o seu " + act.content['event']['type'] + " do dia " + prepare_date(orig_time['date']) +
+                    "para o dia " + prepare_date(alt_time['date']) + " às " + prepare_time(alt_time['time']) + ". Você poderia comparecer nesse novo horário?")
         return msg
 
     elif act.function == "authorize_alternate_time":
-        alt_time = act.content['alternate_time']
-        orig_time = act.content['original_time']
-        msg = ('Foi proposto um novo horário para o ' + act.content['event']['type'] + ' do dia ' + orig_time['date']
-                + ': ' + alt_time['time'] + ' do dia ' + alt_time['date'] + '. Você quer adicionar esse horário à negociação com os outros'
+        alt_time = (act.content['alternate_time'])
+        orig_time = (act.content['original_time'])
+        msg = ('Foi proposto um novo horário para o ' + act.content['event']['type'] + ' do dia ' + prepare_date(orig_time['date'])
+                + ': ' + prepare_time(alt_time['time']) + ' do dia ' + prepare_date(alt_time['date']) + '. Você quer adicionar esse horário à negociação com os outros'
                 + ' participantes?')
         return msg
 
@@ -69,7 +69,7 @@ def generate_response(act):
 
     elif act.function == 'schedule_event':
         event = act.content
-        msg = ("O " + event['type'] + " organizado por " + event['host'] + " acontecerá no dia " + event['date'] + " às " + event['time']
+        msg = ("O " + event['type'] + " organizado por " + event['host'] + " acontecerá no dia " + prepare_date(event['date']) + " às " + prepare_time(event['time'])
                 + " no local " + event['local'] + ". " + ", ".join(event['participants']) + " confirmaram presença. Vocẽ gostaria de " +
                 "incluir esse evento no seu Google Calendar?")
         return msg
@@ -81,7 +81,7 @@ def generate_response(act):
 
     elif act.function == 'decide_final_time_oneoption':
         time = act.content['possible_times'][0]
-        msg = ('Há uma opção de horário com o maior número de participantes: ' + time['date'] + " às " + time['time'] + ". " + 
+        msg = ('Há uma opção de horário com o maior número de participantes: ' + prepare_date(time['date']) + " às " + prepare_time(time['time']) + ". " + 
                 ", ".join(time['participants']) + " confirmaram presença. Você gostaria de marcar o evento nesse horário?")
         return msg
 
@@ -89,7 +89,7 @@ def generate_response(act):
         times = act.content['possible_times']
         msg = 'Há algumas opções de horário com o mesmo número máximo de participantes: \n'
         for time in times:
-            msg += "\nÀs " + time['time'] + " do dia " + time['date'] + ', ' +", ".join(time['participants']) + " podem estar presentes.\n"
+            msg += "\nÀs " + prepare_time(time['time']) + " do dia " + prepare_date(time['date']) + ', ' +", ".join(time['participants']) + " podem estar presentes.\n"
         msg += "Você pode falar o horário escolhido ou cancelar o evento."
         return msg
 
@@ -111,3 +111,9 @@ def generate_response(act):
 
 
     return("Não entendi. Vocẽ quer marcar um compromisso?")
+
+def prepare_date(raw_date):
+    return raw_date.split('-')[2] + ' do ' + raw_date.split('-')[1]
+
+def prepare_time(raw_time):
+    return raw_time.split(':')[0] + ' horas'
